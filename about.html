@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="description"
-    content="About Rakha Revanza Putra Effendy — Information Systems Graduate, IT Support and IT Operations enthusiast.">
+    content="About Rakha Revanza Putra Effendy — Information Systems Graduate with an interest in information technology, systems, and applications.">
 
   <meta name="theme-color" content="#fbfaf7">
 
@@ -244,6 +244,62 @@
 
 
     /* ================================
+       CV DOWNLOAD
+    ================================= */
+
+    .about-cv {
+      margin-top: 4px;
+      margin-bottom: 5px;
+    }
+
+
+    /* ================================
+       FOCUS AREAS
+    ================================= */
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .focus-card {
+      padding: 18px 20px;
+
+      background: white;
+      border: 1px solid var(--about-line);
+      border-radius: 5px;
+    }
+
+    .focus-card span {
+      display: block;
+      margin-bottom: 7px;
+
+      color: #987657;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    .focus-card strong {
+      display: block;
+
+      color: #46382b;
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.6;
+    }
+
+    .focus-card p {
+      margin: 8px 0 0;
+
+      color: var(--about-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    /* ================================
        EDUCATION TIMELINE
     ================================= */
 
@@ -472,6 +528,10 @@
         padding: 20px;
       }
 
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
       .about-footer {
         flex-direction: column;
       }
@@ -567,7 +627,7 @@
           <div class="profile-frame">
 
             <img
-              src="assets/Foto Formal Dasi.jpeg"
+              src="assets/Wisuda Duduk.jpeg"
               alt="Foto profesional Rakha Revanza Putra Effendy"
               loading="eager"
             >
@@ -604,8 +664,9 @@
             Universitas Amikom Yogyakarta dan memiliki
             latar belakang pendidikan Teknik Komputer
             dan Jaringan (TKJ). Saya tertarik membangun
-            karier di bidang IT Support, IT Operations,
-            dan Staf IT.
+            karier di bidang teknologi informasi, dengan
+            fokus pada pengembangan sistem, pengelolaan
+            data, dan operasional IT.
 
           </p>
 
@@ -636,6 +697,102 @@
           </p>
 
 
+          <a
+            href="assets/CV_Rakha_ATS.pdf"
+            class="btn primary about-cv"
+            download="CV_Rakha_ATS.pdf"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            Download CV ↓
+
+          </a>
+
+
+
+          <!-- FOCUS AREAS -->
+
+          <section class="about-section">
+
+            <div class="about-section-heading">
+
+              <h3>Focus areas</h3>
+
+              <span>01 / FOCUS</span>
+
+            </div>
+
+
+            <div class="focus-grid">
+
+              <article class="focus-card">
+
+                <span>01 / SYSTEMS</span>
+
+                <strong>
+                  Information Systems & Applications
+                </strong>
+
+                <p>
+                  Perancangan dan pengembangan sistem
+                  informasi berbasis web.
+                </p>
+
+              </article>
+
+
+              <article class="focus-card">
+
+                <span>02 / DATA</span>
+
+                <strong>
+                  Data & Machine Learning
+                </strong>
+
+                <p>
+                  Pengolahan data, analisis, dan
+                  penerapan model klasifikasi.
+                </p>
+
+              </article>
+
+
+              <article class="focus-card">
+
+                <span>03 / INFRASTRUCTURE</span>
+
+                <strong>
+                  IT Operations & Networking
+                </strong>
+
+                <p>
+                  Dasar jaringan, konfigurasi perangkat,
+                  dan operasional IT.
+                </p>
+
+              </article>
+
+
+              <article class="focus-card">
+
+                <span>04 / DEVELOPMENT</span>
+
+                <strong>
+                  Web Development
+                </strong>
+
+                <p>
+                  Laravel, PHP, MySQL, dan pengembangan
+                  antarmuka.
+                </p>
+
+              </article>
+
+            </div>
+
+          </section>
+
+
 
           <!-- EDUCATION -->
 
@@ -645,7 +802,7 @@
 
               <h3>Education</h3>
 
-              <span>01 / ACADEMIC</span>
+              <span>02 / ACADEMIC</span>
 
             </div>
 
@@ -703,7 +860,7 @@
 
               <h3>Experience</h3>
 
-              <span>02 / EXPERIENCE</span>
+              <span>03 / EXPERIENCE</span>
 
             </div>
 

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="description"
-    content="Personal portfolio of Rakha Revanza Putra Effendy — IT Support, IT Operations, and Information Systems projects.">
+    content="Personal portfolio of Rakha Revanza Putra Effendy — Information Technology, systems, data, and applications.">
 
   <meta name="theme-color" content="#fbfaf7">
 
@@ -380,8 +380,10 @@
     }
 
     .project-image img {
-      width: 100%;
-      height: 100%;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
 
       transition: transform .3s ease;
@@ -452,73 +454,67 @@
 
 
     /* =====================================
-       06. ABOUT PREVIEW
+       06. OPEN TO WORK
     ===================================== */
 
-    .corporate-about {
-      padding: 85px 0;
+    .corporate-cta {
+      padding: 55px 0;
       background: var(--home-bg);
     }
 
-    .about-preview-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 65px;
-      align-items: start;
+    .cta-panel {
+      padding: 46px 50px;
+
+      color: #f7f1e9;
+      background: var(--home-ink);
+      border-radius: 6px;
+
+      box-shadow: 8px 8px 0 rgba(143, 111, 79, .09);
     }
 
-    .about-preview-heading .eyebrow {
-      margin-bottom: 14px;
+    .cta-panel .eyebrow {
+      margin-bottom: 12px;
+
+      color: #d8b48e;
+      font-size: 10px;
+      letter-spacing: 1.8px;
     }
 
-    .about-preview-heading h2 {
+    .cta-panel h2 {
+      margin: 0 0 18px;
+
+      color: #fffaf4;
+      font-size: clamp(28px, 3.8vw, 42px);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -1.4px;
+    }
+
+    .cta-panel h2 span {
+      color: #d8a878;
+    }
+
+    .cta-panel p {
+      max-width: 780px;
       margin: 0;
 
-      color: #34271f;
-      font-size: clamp(29px, 3.7vw, 42px);
-      line-height: 1.3;
-      letter-spacing: -1.5px;
-    }
-
-    .about-preview-content > p {
-      margin: 0 0 25px;
-
-      color: #756b62;
-      font-size: 15px;
+      color: #cec2b6;
+      font-size: 13px;
       line-height: 1.9;
     }
 
-    .about-facts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 25px;
-
-      border-top: 1px solid var(--home-line);
+    .cta-panel p + p {
+      margin-top: 12px;
     }
 
-    .about-fact {
-      padding: 17px 0;
-      border-bottom: 1px solid var(--home-line);
-    }
+    .cta-panel .cta-signature {
+      margin-top: 26px;
 
-    .about-fact span {
-      display: block;
-      margin-bottom: 5px;
-
-      color: #987657;
-      font-size: 10px;
+      color: #d8b48e;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .about-fact strong {
-      color: #46382b;
-      font-size: 12px;
-      font-weight: 650;
-    }
-
-    .about-preview-content .btn {
-      margin-top: 24px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
     }
 
 
@@ -608,10 +604,6 @@
         padding: 16px;
       }
 
-      .about-preview-grid {
-        gap: 35px;
-      }
-
     }
 
 
@@ -648,9 +640,16 @@
         margin-top: 30px;
       }
 
-      .corporate-projects,
-      .corporate-about {
+      .corporate-projects {
         padding: 60px 0;
+      }
+
+      .corporate-cta {
+        padding: 45px 0;
+      }
+
+      .cta-panel {
+        padding: 30px;
       }
 
       .corporate-project-grid {
@@ -659,11 +658,6 @@
 
       .project-information p {
         min-height: auto;
-      }
-
-      .about-preview-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
       }
 
       .projects-heading {
@@ -704,10 +698,6 @@
 
       .project-image {
         height: 220px;
-      }
-
-      .about-facts {
-        grid-template-columns: 1fr;
       }
 
       .footer-content {
@@ -791,8 +781,8 @@
           </p>
 
           <h1>
-            IT Support<br>
-            <span>IT Operations.</span>
+            IT Professional<br>
+            <span>Systems & Data.</span>
           </h1>
 
           <p class="lead">
@@ -800,8 +790,9 @@
             Halo, saya
             <strong>Rakha Revanza Putra Effendy</strong>.
             Lulusan Sistem Informasi dengan latar belakang
-            Teknik Komputer dan Jaringan, tertarik pada dukungan
-            teknis, pengelolaan sistem, dan pengembangan aplikasi.
+            Teknik Komputer dan Jaringan, tertarik pada
+            pengembangan sistem, pengelolaan data, dan
+            operasional IT.
 
           </p>
 
@@ -1025,106 +1016,49 @@
 
 
     <!-- =================================
-         ABOUT PREVIEW
+         OPEN TO WORK
     ================================== -->
 
-    <section class="corporate-about">
+    <section class="corporate-cta">
 
-      <div class="wrap about-preview-grid">
+      <div class="wrap">
 
-
-        <div class="about-preview-heading reveal">
+        <div class="cta-panel reveal">
 
           <p class="eyebrow">
-            PROFILE SNAPSHOT
+            OPEN TO WORK · 2026
           </p>
 
           <h2>
-            Technology, systems,
-            and practical experience.
+            Available for
+            <span>IT opportunities.</span>
           </h2>
 
-        </div>
-
-
-
-        <div class="about-preview-content reveal">
-
           <p>
-
-            Saya memiliki latar belakang pendidikan Sistem Informasi
-            dan Teknik Komputer dan Jaringan. Selama studi, saya
-            mengembangkan proyek website menggunakan Laravel dan
-            MySQL serta menyelesaikan penelitian machine learning
-            menggunakan Python.
-
-            Saya juga memiliki pengalaman PKL di bidang administrasi
-            pemerintahan, termasuk pengelolaan dokumen, arsip,
-            dan laporan.
-
+            Saya terbuka untuk posisi penuh waktu, magang, maupun
+            kontrak di bidang teknologi informasi — mulai dari
+            pengembangan sistem dan aplikasi, pengelolaan serta
+            analisis data, hingga dukungan operasional IT.
           </p>
 
+          <p>
+            Saya terbiasa bekerja terstruktur, mempelajari hal baru
+            dengan cepat, dan menyelesaikan pekerjaan secara
+            menyeluruh. Siap berkontribusi dalam tim, beradaptasi
+            dengan kebutuhan organisasi, dan tumbuh bersama
+            perusahaan.
+          </p>
 
-
-          <div class="about-facts">
-
-
-            <div class="about-fact">
-
-              <span>01 / EDUCATION</span>
-
-              <strong>
-                S1 Sistem Informasi
-              </strong>
-
-            </div>
-
-
-            <div class="about-fact">
-
-              <span>02 / BACKGROUND</span>
-
-              <strong>
-                Teknik Komputer dan Jaringan
-              </strong>
-
-            </div>
-
-
-            <div class="about-fact">
-
-              <span>03 / EXPERIENCE</span>
-
-              <strong>
-                PKL Satuan Polisi Pamong Praja
-              </strong>
-
-            </div>
-
-
-            <div class="about-fact">
-
-              <span>04 / INTEREST</span>
-
-              <strong>
-                IT Support & IT Operations
-              </strong>
-
-            </div>
-
-
-          </div>
-
-
-          <a href="about.html" class="btn secondary">
-            More About Me →
-          </a>
+          <p class="cta-signature">
+            Rakha Revanza Putra Effendy — Information Systems Graduate
+          </p>
 
         </div>
 
       </div>
 
     </section>
+
 
 
   </main>

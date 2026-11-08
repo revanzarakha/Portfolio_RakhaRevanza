@@ -15,10 +15,11 @@ ISI:
 - pharmacy.html (detail proyek, screenshot asli)
 - mental-health.html (detail proyek, screenshot asli)
 - assets/style.css, assets/app.js, assets/*.png, dan bukti PDF.
+- assets/CV_Rakha_ATS.pdf (CV untuk diunduh).
 
-BELUM FINAL UNTUK DIPUBLIKASIKAN:
-- Foto profesional belum diberikan, sehingga hanya placeholder.
-- Email dan tautan LinkedIn/GitHub belum dikonfirmasi, sehingga tidak ada alamat palsu.
+CATATAN:
+- Foto profesional, email, Instagram, dan WhatsApp sudah aktif.
+- Tautan LinkedIn/GitHub belum tersedia.
 - Keterampilan jaringan dicantumkan sebagai dasar/praktik sekolah, bukan penguasaan tingkat mahir.
 
 PUBLISHING:

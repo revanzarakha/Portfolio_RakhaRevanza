@@ -282,31 +282,6 @@
     }
 
 
-    /* SKILL TAGS */
-
-    .skill-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      margin-bottom: 23px;
-    }
-
-    .skill-items span {
-      padding: 8px 12px;
-
-      color: #624a35;
-      background: #f7f3ee;
-
-      border: 1px solid #e9dfd4;
-      border-radius: 3px;
-
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-
     /* CARD FOOTER */
 
     .skill-card-footer {
@@ -415,12 +390,7 @@
     }
 
     .career-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-
-      padding: 32px;
+      padding: 36px 38px;
 
       background: white;
       border: 1px solid var(--s-line);
@@ -428,15 +398,15 @@
     }
 
     .career-card h2 {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
 
       color: var(--s-ink);
-      font-size: 24px;
-      letter-spacing: -.7px;
+      font-size: clamp(26px, 3.4vw, 34px);
+      letter-spacing: -.9px;
     }
 
     .career-card p {
-      max-width: 570px;
+      max-width: 780px;
       margin: 0;
 
       color: var(--s-muted);
@@ -444,27 +414,8 @@
       line-height: 1.9;
     }
 
-    .career-link {
-      display: inline-flex;
-      flex-shrink: 0;
-      align-items: center;
-      justify-content: center;
-
-      padding: 13px 19px;
-
-      color: white;
-      background: var(--s-brown);
-      border: 1px solid var(--s-brown);
-      border-radius: 4px;
-
-      font-size: 12px;
-      font-weight: 650;
-      text-decoration: none;
-      transition: background .2s ease;
-    }
-
-    .career-link:hover {
-      background: var(--s-brown-dark);
+    .career-card p + p {
+      margin-top: 12px;
     }
 
 
@@ -502,11 +453,6 @@
       .note-grid {
         grid-template-columns: 1fr;
         gap: 25px;
-      }
-
-      .career-card {
-        align-items: flex-start;
-        flex-direction: column;
       }
 
     }
@@ -567,10 +513,6 @@
 
       .skills-footer {
         flex-direction: column;
-      }
-
-      .career-link {
-        width: 100%;
       }
 
     }
@@ -758,19 +700,6 @@
             </p>
 
 
-            <div class="skill-items">
-
-              <span>Laravel</span>
-
-              <span>PHP (melalui Laravel)</span>
-
-              <span>MySQL</span>
-
-              <span>Full-stack Development</span>
-
-            </div>
-
-
             <div class="skill-card-footer">
 
               <p>
@@ -812,21 +741,6 @@
               berbasis DASS-21.
 
             </p>
-
-
-            <div class="skill-items">
-
-              <span>Python</span>
-
-              <span>pandas</span>
-
-              <span>NumPy</span>
-
-              <span>Scikit-learn</span>
-
-              <span>Streamlit</span>
-
-            </div>
 
 
             <div class="skill-card-footer">
@@ -871,21 +785,6 @@
             </p>
 
 
-            <div class="skill-items">
-
-              <span>Document Management</span>
-
-              <span>Document Archiving</span>
-
-              <span>Report Preparation</span>
-
-              <span>Microsoft Office</span>
-
-              <span>Microsoft Excel</span>
-
-            </div>
-
-
             <div class="skill-card-footer">
 
               <p>
@@ -925,19 +824,6 @@
               termasuk beberapa praktik konfigurasi.
 
             </p>
-
-
-            <div class="skill-items">
-
-              <span>LAN Fundamentals</span>
-
-              <span>IP Address Configuration</span>
-
-              <span>Router Configuration</span>
-
-              <span>MikroTik (Basic Practice)</span>
-
-            </div>
 
 
             <div class="skill-card-footer">
@@ -1040,34 +926,33 @@
 
         <div class="career-card reveal">
 
+          <p class="section-label">
+            CAREER INTERESTS
+          </p>
 
-          <div>
+          <h2>Where I want to grow.</h2>
 
-            <p class="section-label">
-              CAREER INTERESTS
-            </p>
+          <p>
 
-            <h2>Where I want to grow.</h2>
+            Saya memiliki minat untuk mengembangkan karier
+            di bidang teknologi informasi, khususnya
+            pengembangan sistem, pengelolaan data, dan
+            operasional IT. Saya ingin bekerja di lingkungan
+            yang mendorong pembelajaran berkelanjutan dan
+            memberi ruang untuk menerapkan kemampuan teknis
+            secara nyata.
 
-            <p>
+          </p>
 
-              Saya memiliki minat untuk mengembangkan
-              karier di bidang IT Support, IT Operations,
-              Staf IT, serta Data Analyst melalui
-              kesempatan belajar dan pengalaman
-              profesional.
+          <p>
 
-            </p>
+            Saya terbuka pada peran yang menuntut ketelitian,
+            kolaborasi lintas tim, dan penyelesaian masalah
+            secara praktis. Melalui pengalaman akademik dan
+            praktik langsung, saya terus membangun cara kerja
+            yang terstruktur, adaptif, dan bertanggung jawab.
 
-          </div>
-
-
-          <a href="contact.html" class="career-link">
-
-            Let's connect ↗
-
-          </a>
-
+          </p>
 
         </div>
 

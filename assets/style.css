@@ -577,8 +577,9 @@ h3 {
   height: 240px;
   padding: 18px;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   overflow: hidden;
   background: #f2eee8;
@@ -737,8 +738,9 @@ h3 {
 }
 
 .gallery img {
-  width: 100%;
+  width: auto;
   height: 240px;
+  max-width: 100%;
   margin-bottom: 10px;
   object-fit: contain;
 }
