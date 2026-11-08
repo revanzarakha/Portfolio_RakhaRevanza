@@ -1,0 +1,1565 @@
+
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="Mental Health Analyzer — Machine Learning project using Python, Logistic Regression, Random Forest and Streamlit by Rakha Revanza Putra Effendy.">
+
+  <meta name="theme-color" content="#fbfaf7">
+
+  <title>Mental Health Analyzer | Rakha Revanza</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+
+    /* ==================================
+       01. DESIGN SYSTEM
+    ================================== */
+
+    :root {
+      --m-bg: #fbfaf7;
+      --m-white: #ffffff;
+      --m-beige: #f2ebe2;
+      --m-brown: #98643c;
+      --m-brown-dark: #79502f;
+      --m-ink: #30271f;
+      --m-muted: #786e64;
+      --m-line: #e8ded3;
+
+      --m-green: #66816e;
+      --m-green-bg: #edf2eb;
+    }
+
+    body.mental-page {
+      background: var(--m-bg);
+      color: var(--m-ink);
+    }
+
+    .mental-page .main {
+      background: var(--m-bg);
+    }
+
+    .mental-page .wrap {
+      width: min(1120px, calc(100% - 64px));
+    }
+
+
+    /* ==================================
+       02. HEADER
+    ================================== */
+
+    .mental-page .site-header {
+      background: rgba(251, 250, 247, .97);
+      border-bottom: 1px solid var(--m-line);
+      backdrop-filter: blur(12px);
+    }
+
+    .mental-page .logo {
+      color: var(--m-ink);
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .mental-page .logo span {
+      color: var(--m-brown);
+    }
+
+    .mental-page .menu a {
+      color: var(--m-muted);
+      font-size: 13px;
+    }
+
+    .mental-page .menu a:hover,
+    .mental-page .menu a.active {
+      color: var(--m-brown-dark);
+      background: var(--m-beige);
+    }
+
+
+    /* ==================================
+       03. PROJECT HERO
+    ================================== */
+
+    .mental-hero {
+      padding: 55px 0 40px;
+    }
+
+    .project-back {
+      display: inline-flex;
+      margin-bottom: 35px;
+
+      color: var(--m-brown);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .project-back:hover {
+      color: var(--m-brown-dark);
+    }
+
+    .project-eyebrow {
+      margin-bottom: 14px;
+
+      color: var(--m-brown);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .mental-hero h1 {
+      margin: 0 0 18px;
+
+      color: var(--m-ink);
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 750;
+      line-height: 1.15;
+      letter-spacing: -2.5px;
+    }
+
+    .mental-hero h1 span {
+      color: var(--m-brown);
+    }
+
+    .mental-hero .lead {
+      max-width: 760px;
+      margin: 0;
+
+      color: var(--m-muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .project-tags span {
+      padding: 7px 13px;
+
+      color: #765638;
+      background: var(--m-beige);
+      border: 1px solid #e4d8ca;
+      border-radius: 3px;
+
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+
+    /* ==================================
+       04. OVERVIEW SECTION
+    ================================== */
+
+    .mental-overview {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: start;
+      gap: 35px;
+
+      padding: 30px 0 75px;
+    }
+
+    .mental-preview {
+      min-width: 0;
+    }
+
+    .preview-frame {
+      padding: 15px;
+
+      background: #f0e8de;
+      border: 1px solid #e4d8ca;
+      border-radius: 5px;
+    }
+
+    .preview-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+
+      object-fit: contain;
+      background: white;
+      border-radius: 3px;
+    }
+
+    .preview-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 13px;
+
+      color: var(--m-muted);
+      font-size: 11px;
+    }
+
+    .preview-caption strong {
+      color: var(--m-brown);
+      letter-spacing: 1px;
+    }
+
+
+    /* OVERVIEW CARD */
+
+    .overview-card {
+      padding: 27px;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 5px;
+    }
+
+    .overview-card h2 {
+      margin: 0 0 15px;
+
+      color: var(--m-ink);
+      font-size: 23px;
+      letter-spacing: -.7px;
+    }
+
+    .overview-card > p {
+      margin: 0 0 22px;
+
+      color: var(--m-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .detail-row {
+      padding: 14px 0;
+      border-top: 1px solid var(--m-line);
+    }
+
+    .detail-row span {
+      display: block;
+      margin-bottom: 6px;
+
+      color: #987657;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .detail-row strong {
+      display: block;
+
+      color: #46382b;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .overview-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .overview-actions .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .mental-page .btn.primary {
+      color: white;
+      background: var(--m-brown);
+      border: 1px solid var(--m-brown);
+    }
+
+    .mental-page .btn.primary:hover {
+      background: var(--m-brown-dark);
+    }
+
+    .mental-page .btn.secondary {
+      color: var(--m-brown-dark);
+      background: transparent;
+      border: 1px solid #d8c5b2;
+    }
+
+    .mental-page .btn.secondary:hover {
+      background: var(--m-beige);
+    }
+
+
+    /* ==================================
+       05. MODEL EVALUATION
+    ================================== */
+
+    .evaluation-section {
+      padding: 75px 0;
+
+      background: #f5f1eb;
+      border-top: 1px solid var(--m-line);
+      border-bottom: 1px solid var(--m-line);
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+
+      color: var(--m-brown);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 15px;
+
+      color: var(--m-ink);
+      font-size: clamp(27px, 4vw, 36px);
+      letter-spacing: -1.2px;
+    }
+
+    .section-description {
+      max-width: 750px;
+      margin: 0 0 32px;
+
+      color: var(--m-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .model-card {
+      padding: 27px;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 5px;
+    }
+
+    .model-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 24px;
+      padding-bottom: 17px;
+
+      border-bottom: 1px solid var(--m-line);
+    }
+
+    .model-card-header h3 {
+      margin: 0;
+      color: var(--m-ink);
+      font-size: 19px;
+    }
+
+    .model-number {
+      color: #a17d5b;
+      font-family: Georgia, serif;
+      font-size: 24px;
+    }
+
+    .accuracy-item {
+      margin-bottom: 22px;
+    }
+
+    .accuracy-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+
+      margin-bottom: 9px;
+    }
+
+    .accuracy-heading span {
+      color: #665a4e;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .accuracy-heading strong {
+      color: var(--m-brown-dark);
+      font-size: 14px;
+    }
+
+    .accuracy-track {
+      height: 7px;
+      overflow: hidden;
+
+      background: #eee8e0;
+      border-radius: 20px;
+    }
+
+    .accuracy-fill {
+      height: 100%;
+      background: #a17c5a;
+      border-radius: 20px;
+    }
+
+    .model-footnote {
+      margin: 17px 0 0;
+      padding-top: 14px;
+
+      color: var(--m-muted);
+      border-top: 1px solid var(--m-line);
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    /* MODEL COMPARISON */
+
+    .comparison-note {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+
+      margin-top: 22px;
+      padding: 19px 21px;
+
+      color: #70573e;
+      background: #f4eee7;
+      border-left: 3px solid var(--m-brown);
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .comparison-note strong {
+      color: #49372a;
+    }
+
+
+    /* ==================================
+       06. PROJECT GALLERY
+    ================================== */
+
+    .gallery-section {
+      padding: 80px 0;
+    }
+
+    .gallery-heading {
+      margin-bottom: 30px;
+    }
+
+    .gallery-heading p {
+      max-width: 620px;
+      margin: 0;
+
+      color: var(--m-muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .gallery-item {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+
+      text-align: left;
+      cursor: zoom-in;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 4px;
+    }
+
+    .gallery-image {
+      height: 255px;
+      padding: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #f0e9e0;
+      overflow: hidden;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+      transition: transform .3s ease;
+    }
+
+    .gallery-item:hover .gallery-image img {
+      transform: scale(1.025);
+    }
+
+    .gallery-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      padding: 17px 19px;
+
+      color: #44372b;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .gallery-caption span:last-child {
+      color: var(--m-brown);
+      font-size: 16px;
+    }
+
+
+    /* ==================================
+       07. PROJECT INSIGHTS
+    ================================== */
+
+    .insights-section {
+      padding: 0 0 75px;
+    }
+
+    .insights-card {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 35px;
+
+      padding: 35px;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 5px;
+    }
+
+    .insights-card h2 {
+      margin: 0;
+
+      color: var(--m-ink);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    .insights-list {
+      margin: 0;
+      padding-left: 20px;
+
+      color: var(--m-muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .insights-list li {
+      padding-left: 5px;
+      margin-bottom: 9px;
+    }
+
+    .project-context {
+      margin-top: 20px;
+      padding: 16px 19px;
+
+      color: #70573e;
+      background: #f4eee7;
+      border-left: 3px solid var(--m-brown);
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* ==================================
+       08. DISCLAIMER
+    ================================== */
+
+    .disclaimer-section {
+      padding: 0 0 75px;
+    }
+
+    .disclaimer-card {
+      padding: 24px 27px;
+
+      background: var(--m-green-bg);
+      border: 1px solid #dce6d8;
+      border-radius: 4px;
+    }
+
+    .disclaimer-card h3 {
+      margin: 0 0 10px;
+
+      color: #425b46;
+      font-size: 15px;
+    }
+
+    .disclaimer-card p {
+      margin: 0;
+
+      color: #596d5c;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+
+    /* ==================================
+       09. FOOTER
+    ================================== */
+
+    .mental-page .footer {
+      padding: 25px 0;
+
+      color: var(--m-muted);
+      background: #f1e9df;
+
+      border-top: 1px solid var(--m-line);
+      font-size: 12px;
+    }
+
+    .mental-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+
+    /* ==================================
+       10. LIGHTBOX
+    ================================== */
+
+    .mental-page .lightbox {
+      background: rgba(35, 28, 22, .94);
+    }
+
+    .mental-page .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
+    .mental-page .lightbox-close {
+      color: white;
+    }
+
+
+    /* ==================================
+       11. RESPONSIVE
+    ================================== */
+
+    @media (max-width: 850px) {
+
+      .mental-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .insights-card {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .mental-page .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .mental-hero {
+        padding-top: 38px;
+      }
+
+      .mental-hero h1 {
+        font-size: 38px;
+      }
+
+      .mental-hero .lead {
+        font-size: 14px;
+      }
+
+      .mental-overview {
+        padding-top: 15px;
+        gap: 25px;
+      }
+
+      .preview-frame {
+        padding: 9px;
+      }
+
+      .preview-caption {
+        flex-direction: column;
+      }
+
+      .model-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .model-card {
+        padding: 21px;
+      }
+
+      .gallery-image {
+        height: 220px;
+      }
+
+      .insights-card {
+        padding: 23px;
+      }
+
+      .mental-footer {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="mental-page">
+
+
+  <!-- =================================
+       HEADER
+  ================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap topbar">
+
+      <a class="logo" href="index.html">
+        Rakha Revanza Putra Effendy<span>.</span>
+      </a>
+
+      <button
+        class="toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Buka navigasi">
+
+        ☰ Menu
+
+      </button>
+
+      <nav class="menu" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="projects.html" class="active" aria-current="page">
+          Projects
+        </a>
+
+        <a href="skills.html">Skills</a>
+
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="main">
+
+
+    <!-- ==================================
+         PROJECT INTRODUCTION
+    =================================== -->
+
+    <div class="wrap">
+
+      <section class="mental-hero reveal">
+
+        <a href="projects.html" class="project-back">
+          ← Back to projects
+        </a>
+
+        <p class="project-eyebrow">
+          PROJECT 02 / PYTHON · MACHINE LEARNING
+        </p>
+
+        <h1>
+          Mental Health Analyzer<span>.</span>
+        </h1>
+
+        <p class="lead">
+
+          Aplikasi skrining awal berdasarkan kuesioner
+          DASS-21, menggunakan model klasifikasi untuk
+          mengestimasi kategori depresi, kecemasan,
+          dan stres serta menampilkan hasil melalui
+          antarmuka Streamlit.
+
+        </p>
+
+        <div class="project-tags">
+
+          <span>Python</span>
+
+          <span>Machine Learning</span>
+
+          <span>Scikit-learn</span>
+
+          <span>Streamlit</span>
+
+          <span>DASS-21</span>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==================================
+           PROJECT OVERVIEW
+      =================================== -->
+
+      <section class="mental-overview">
+
+
+        <!-- MAIN SCREENSHOT -->
+
+        <div class="mental-preview reveal">
+
+          <div class="preview-frame">
+
+            <img
+              src="assets/mental-home.png"
+              alt="Halaman awal aplikasi Mental Health Analyzer"
+              loading="eager">
+
+          </div>
+
+          <div class="preview-caption">
+
+            <strong>APPLICATION INTERFACE</strong>
+
+            <span>DASS-21 questionnaire</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- OVERVIEW CARD -->
+
+        <aside class="overview-card reveal">
+
+          <p class="project-eyebrow">
+            PROJECT OVERVIEW
+          </p>
+
+          <h2>About the project</h2>
+
+          <p>
+
+            Proyek ini merupakan penelitian dan
+            pengembangan aplikasi machine learning
+            menggunakan data jawaban 443 responden
+            dari kuesioner DASS-21.
+
+            Penelitian membandingkan dua algoritma
+            klasifikasi, yaitu Logistic Regression
+            dan Random Forest, untuk mengestimasi
+            kategori depresi, kecemasan, dan stres.
+
+          </p>
+
+
+          <div class="detail-row">
+
+            <span>Dataset</span>
+
+            <strong>
+              443 responden
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Questionnaire</span>
+
+            <strong>
+              DASS-21 · 21 Items
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Programming Language</span>
+
+            <strong>Python</strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Classification Models</span>
+
+            <strong>
+              Logistic Regression & Random Forest
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Application Interface</span>
+
+            <strong>Streamlit</strong>
+
+          </div>
+
+
+          <div class="overview-actions">
+
+            <a
+              class="btn primary"
+              href="assets/portofolio-mental-health.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              View Project Documentation ↗
+
+            </a>
+
+            <a
+              class="btn secondary"
+              href="projects.html">
+
+              ← Back to All Projects
+
+            </a>
+
+          </div>
+
+        </aside>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- ==================================
+         MODEL EVALUATION
+    =================================== -->
+
+    <section class="evaluation-section">
+
+      <div class="wrap">
+
+        <p class="section-label">
+          MODEL PERFORMANCE
+        </p>
+
+        <h2 class="section-title">
+          Model Evaluation
+        </h2>
+
+        <p class="section-description">
+
+          Perbandingan performa Logistic Regression
+          dan Random Forest berdasarkan akurasi
+          pada data pengujian sebesar 20%,
+          sesuai hasil yang dilaporkan dalam skripsi.
+
+        </p>
+
+
+
+        <div class="model-grid">
+
+
+          <!-- LOGISTIC REGRESSION -->
+
+          <article class="model-card reveal">
+
+            <div class="model-card-header">
+
+              <h3>Logistic Regression</h3>
+
+              <span class="model-number">01</span>
+
+            </div>
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Depression</span>
+
+                <strong>93.3%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:93.3%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Anxiety</span>
+
+                <strong>93.3%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:93.3%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Stress</span>
+
+                <strong>91.0%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:91%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <p class="model-footnote">
+              Classification model · Test data accuracy
+            </p>
+
+          </article>
+
+
+
+          <!-- RANDOM FOREST -->
+
+          <article class="model-card reveal">
+
+            <div class="model-card-header">
+
+              <h3>Random Forest</h3>
+
+              <span class="model-number">02</span>
+
+            </div>
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Depression</span>
+
+                <strong>79.8%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:79.8%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Anxiety</span>
+
+                <strong>91.0%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:91%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="accuracy-item">
+
+              <div class="accuracy-heading">
+
+                <span>Stress</span>
+
+                <strong>75.3%</strong>
+
+              </div>
+
+              <div class="accuracy-track">
+
+                <div
+                  class="accuracy-fill"
+                  style="width:75.3%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <p class="model-footnote">
+              Classification model · Test data accuracy
+            </p>
+
+          </article>
+
+
+        </div>
+
+
+
+        <!-- MODEL NOTE -->
+
+        <div class="comparison-note">
+
+          <div>
+
+            <strong>Evaluation note:</strong>
+
+            Berdasarkan angka akurasi yang dilaporkan,
+            Logistic Regression memperoleh hasil lebih
+            tinggi dibandingkan Random Forest pada
+            ketiga domain yang dievaluasi.
+
+            Akurasi model merupakan hasil evaluasi
+            pada data pengujian, bukan tingkat keyakinan
+            atau probabilitas risiko klinis pengguna.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         APPLICATION SCREENSHOTS
+    =================================== -->
+
+    <section class="gallery-section">
+
+      <div class="wrap">
+
+
+        <div class="gallery-heading">
+
+          <p class="section-label">
+            APPLICATION DOCUMENTATION
+          </p>
+
+          <h2 class="section-title">
+            Interface Gallery
+          </h2>
+
+          <p>
+
+            Dokumentasi tampilan aplikasi mulai dari
+            pengisian kuesioner, bagian penilaian,
+            hingga visualisasi hasil prediksi.
+
+            Klik gambar untuk melihat screenshot
+            dalam ukuran lebih besar.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="gallery-grid">
+
+
+          <!-- SCREENSHOT 01 -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/mental-home.png"
+            data-alt="Halaman awal dan bagian depresi">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/mental-home.png"
+                alt="Halaman awal dan bagian depresi"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>01. Questionnaire & Depression</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- SCREENSHOT 02 -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/mental-anxiety.png"
+            data-alt="Bagian kecemasan">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/mental-anxiety.png"
+                alt="Bagian kecemasan"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>02. Anxiety Assessment</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- SCREENSHOT 03 -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/mental-stress.png"
+            data-alt="Bagian stres">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/mental-stress.png"
+                alt="Bagian stres"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>03. Stress Assessment</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- SCREENSHOT 04 -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/mental-result.png"
+            data-alt="Ringkasan hasil prediksi">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/mental-result.png"
+                alt="Ringkasan hasil prediksi"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>04. Prediction Results</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- SCREENSHOT 05 -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/mental-viz.png"
+            data-alt="Visualisasi perbandingan confidence model">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/mental-viz.png"
+                alt="Visualisasi perbandingan confidence model"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>05. Model Visualization</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         LEARNING EXPERIENCE
+    =================================== -->
+
+    <section class="insights-section">
+
+      <div class="wrap">
+
+        <div class="insights-card">
+
+
+          <div>
+
+            <p class="section-label">
+              DEVELOPMENT EXPERIENCE
+            </p>
+
+            <h2>
+              What I learned.
+            </h2>
+
+          </div>
+
+
+          <div>
+
+            <ul class="insights-list">
+
+              <li>
+                Mengolah dan mempersiapkan data
+                kuesioner DASS-21 untuk kebutuhan
+                pengembangan model machine learning.
+              </li>
+
+              <li>
+                Menerapkan dan membandingkan
+                algoritma Logistic Regression
+                dan Random Forest.
+              </li>
+
+              <li>
+                Mengevaluasi performa model
+                menggunakan metrik akurasi
+                pada data pengujian.
+              </li>
+
+              <li>
+                Mengintegrasikan model klasifikasi
+                ke dalam aplikasi interaktif
+                menggunakan Streamlit.
+              </li>
+
+              <li>
+                Menyajikan hasil prediksi dan
+                visualisasi confidence model
+                melalui antarmuka aplikasi.
+              </li>
+
+            </ul>
+
+
+            <div class="project-context">
+
+              <strong>Project scope:</strong>
+
+              Proyek ini menggabungkan pengolahan data,
+              penerapan algoritma klasifikasi, evaluasi
+              model, dan implementasi aplikasi berbasis web.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         HEALTH DISCLAIMER
+    =================================== -->
+
+    <section class="disclaimer-section">
+
+      <div class="wrap">
+
+        <div class="disclaimer-card">
+
+          <h3>Important Application Disclaimer</h3>
+
+          <p>
+
+            Mental Health Analyzer merupakan aplikasi
+            skrining awal berbasis kuesioner DASS-21.
+            Hasil prediksi dan confidence model tidak
+            dapat digunakan sebagai diagnosis klinis
+            maupun pengganti konsultasi dengan
+            profesional kesehatan mental.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==================================
+       FOOTER
+    =================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap mental-footer">
+
+      <span>
+        © 2026 Rakha Revanza Putra Effendy
+      </span>
+
+      <span>
+        Personal IT Portfolio
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ==================================
+       LIGHTBOX
+    =================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Project image preview">
+
+    <button
+      class="lightbox-close"
+      type="button"
+      aria-label="Close preview">
+
+      ×
+
+    </button>
+
+    <img alt="">
+
+  </div>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="assets/app.js"></script>
+
+</body>
+
+</html>

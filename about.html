@@ -1,0 +1,783 @@
+
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="About Rakha Revanza Putra Effendy — Information Systems Graduate, IT Support and IT Operations enthusiast.">
+
+  <meta name="theme-color" content="#fbfaf7">
+
+  <title>About | Rakha Revanza Putra Effendy</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+
+    /* ================================
+       DESIGN SYSTEM
+    ================================= */
+
+    :root {
+      --about-bg: #fbfaf7;
+      --about-white: #ffffff;
+      --about-beige: #f2ebe2;
+      --about-brown: #98643c;
+      --about-dark: #30271f;
+      --about-muted: #786e64;
+      --about-line: #e8ded3;
+    }
+
+    body.about-page {
+      background: var(--about-bg);
+      color: var(--about-dark);
+    }
+
+    .about-page .main {
+      background: var(--about-bg);
+    }
+
+    .about-page .wrap {
+      width: min(1120px, calc(100% - 64px));
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    .about-page .site-header {
+      background: rgba(251, 250, 247, .97);
+      border-bottom: 1px solid var(--about-line);
+      backdrop-filter: blur(12px);
+    }
+
+    .about-page .logo {
+      color: var(--about-dark);
+    }
+
+    .about-page .logo span {
+      color: var(--about-brown);
+    }
+
+    .about-page .menu a {
+      color: var(--about-muted);
+    }
+
+    .about-page .menu a.active,
+    .about-page .menu a:hover {
+      color: var(--about-brown);
+      background: var(--about-beige);
+    }
+
+
+    /* ================================
+       PAGE INTRO
+    ================================= */
+
+    .about-intro {
+      padding: 62px 0 35px;
+    }
+
+    .about-eyebrow {
+      margin-bottom: 15px;
+
+      color: var(--about-brown);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-intro h1 {
+      margin: 0 0 15px;
+
+      color: var(--about-dark);
+      font-size: clamp(38px, 5vw, 55px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+    }
+
+    .about-intro h1 span {
+      color: var(--about-brown);
+    }
+
+    .about-intro > p:last-child {
+      max-width: 650px;
+      margin: 0;
+
+      color: var(--about-muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+
+    /* ================================
+       MAIN PROFILE LAYOUT
+    ================================= */
+
+    .about-profile {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      align-items: start;
+      gap: 55px;
+
+      padding: 25px 0 80px;
+    }
+
+
+    /* ================================
+       PROFILE PHOTO
+    ================================= */
+
+    .profile-column {
+      position: sticky;
+      top: 110px;
+    }
+
+    .profile-frame {
+      padding: 13px;
+
+      background: var(--about-beige);
+      border: 1px solid #e0d3c5;
+      border-radius: 5px;
+    }
+
+    .profile-frame img {
+      display: block;
+
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 22%;
+
+      border-radius: 3px;
+    }
+
+    .profile-frame-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      padding: 15px 3px 3px;
+    }
+
+    .profile-frame-footer strong {
+      color: var(--about-dark);
+      font-size: 12px;
+    }
+
+    .profile-frame-footer span {
+      color: var(--about-brown);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+    }
+
+    .profile-caption {
+      margin-top: 17px;
+
+      color: var(--about-muted);
+      font-family: Georgia, serif;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+
+    /* ================================
+       BIOGRAPHY
+    ================================= */
+
+    .about-content h2 {
+      margin: 0 0 20px;
+
+      color: var(--about-dark);
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+
+    .about-content > p {
+      margin: 0 0 17px;
+
+      color: var(--about-muted);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+
+    /* ================================
+       SECTION HEADINGS
+    ================================= */
+
+    .about-section {
+      margin-top: 43px;
+    }
+
+    .about-section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+
+      margin-bottom: 22px;
+    }
+
+    .about-section-heading h3 {
+      margin: 0;
+
+      color: var(--about-dark);
+      font-size: 21px;
+      letter-spacing: -.5px;
+    }
+
+    .about-section-heading span {
+      color: var(--about-brown);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1.4px;
+    }
+
+
+    /* ================================
+       EDUCATION TIMELINE
+    ================================= */
+
+    .education-list {
+      position: relative;
+      padding-left: 20px;
+      border-left: 1px solid #d9c5b0;
+    }
+
+    .education-item {
+      position: relative;
+      padding: 0 0 25px 17px;
+    }
+
+    .education-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .education-item::before {
+      content: "";
+
+      position: absolute;
+      top: 5px;
+      left: -25px;
+
+      width: 9px;
+      height: 9px;
+
+      background: var(--about-brown);
+      border: 3px solid var(--about-bg);
+      border-radius: 50%;
+      box-sizing: content-box;
+    }
+
+    .education-year {
+      display: block;
+      margin-bottom: 7px;
+
+      color: var(--about-brown);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .education-item h4 {
+      margin: 0 0 6px;
+
+      color: var(--about-dark);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .education-item p {
+      margin: 0;
+
+      color: var(--about-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* ================================
+       EXPERIENCE CARD
+    ================================= */
+
+    .experience-card {
+      padding: 24px;
+
+      background: white;
+      border: 1px solid var(--about-line);
+      border-radius: 5px;
+    }
+
+    .experience-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+
+      margin-bottom: 15px;
+    }
+
+    .experience-top h4 {
+      margin: 0 0 7px;
+
+      color: var(--about-dark);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .experience-top p {
+      margin: 0;
+
+      color: var(--about-muted);
+      font-size: 12px;
+    }
+
+    .experience-date {
+      flex-shrink: 0;
+
+      padding: 7px 9px;
+
+      color: var(--about-brown);
+      background: var(--about-beige);
+      border-radius: 3px;
+
+      font-size: 10px;
+      font-weight: 650;
+    }
+
+    .experience-description {
+      margin: 0;
+
+      color: var(--about-muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+
+    /* ================================
+       PERSONAL NOTE
+    ================================= */
+
+    .about-note {
+      margin-top: 20px;
+      padding: 20px;
+
+      background: var(--about-beige);
+      border-left: 3px solid #ae8967;
+      border-radius: 2px;
+    }
+
+    .about-note p {
+      margin: 0;
+
+      color: #705d4b;
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.9;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    .about-page .footer {
+      padding: 25px 0;
+
+      color: var(--about-muted);
+      background: #f1e9df;
+      border-top: 1px solid var(--about-line);
+      font-size: 12px;
+    }
+
+    .about-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 850px) {
+
+      .about-profile {
+        grid-template-columns: .8fr 1.2fr;
+        gap: 30px;
+      }
+
+      .profile-column {
+        top: 90px;
+      }
+
+      .experience-top {
+        flex-direction: column;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .about-page .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .about-intro {
+        padding-top: 42px;
+      }
+
+      .about-intro h1 {
+        font-size: 39px;
+      }
+
+      .about-profile {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-top: 10px;
+      }
+
+      .profile-column {
+        position: static;
+        max-width: 390px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .profile-frame img {
+        aspect-ratio: 4 / 5;
+      }
+
+      .about-content h2 {
+        font-size: 29px;
+      }
+
+      .about-section {
+        margin-top: 35px;
+      }
+
+      .experience-card {
+        padding: 20px;
+      }
+
+      .about-footer {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="about-page">
+
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+
+    <div class="wrap topbar">
+
+      <a class="logo" href="index.html">
+        Rakha Revanza Putra Effendy<span>.</span>
+      </a>
+
+      <button
+        class="toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Buka navigasi">
+
+        ☰ Menu
+
+      </button>
+
+      <nav class="menu" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html" class="active" aria-current="page">
+          About
+        </a>
+
+        <a href="projects.html">Projects</a>
+
+        <a href="skills.html">Skills</a>
+
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="main">
+
+
+    <!-- PAGE INTRO -->
+
+    <div class="wrap">
+
+      <section class="about-intro reveal">
+
+        <p class="about-eyebrow">
+          ABOUT / PROFILE
+        </p>
+
+        <h1>
+          More than a job title<span>.</span>
+        </h1>
+
+        <p>
+          Latar belakang pendidikan, pengalaman belajar,
+          dan perjalanan saya dalam mengembangkan
+          kemampuan di bidang teknologi informasi.
+        </p>
+
+      </section>
+
+
+
+      <!-- PROFILE AND BIOGRAPHY -->
+
+      <section class="about-profile">
+
+
+        <!-- PROFILE PHOTO -->
+
+        <aside class="profile-column reveal">
+
+          <div class="profile-frame">
+
+            <img
+              src="assets/Foto Formal Dasi.jpeg"
+              alt="Foto profesional Rakha Revanza Putra Effendy"
+              loading="eager"
+            >
+
+            <div class="profile-frame-footer">
+
+              <strong>Rakha Revanza Putra Effendy</strong>
+
+              <span>01 / PROFILE</span>
+
+            </div>
+
+          </div>
+
+          <p class="profile-caption">
+            Information Systems Graduate
+          </p>
+
+        </aside>
+
+
+
+        <!-- ABOUT CONTENT -->
+
+        <div class="about-content reveal">
+
+
+          <h2>Halo, saya Rakha.</h2>
+
+
+          <p>
+
+            Saya lulusan S1 Sistem Informasi
+            Universitas Amikom Yogyakarta dan memiliki
+            latar belakang pendidikan Teknik Komputer
+            dan Jaringan (TKJ). Saya tertarik membangun
+            karier di bidang IT Support, IT Operations,
+            dan Staf IT.
+
+          </p>
+
+
+          <p>
+
+            Selama studi, saya mengembangkan proyek
+            Sistem Informasi Apotek berbasis Laravel
+            dan MySQL serta menyelesaikan penelitian
+            machine learning menggunakan Python dan
+            Streamlit. Proyek-proyek tersebut
+            memperkenalkan saya pada proses
+            pengembangan aplikasi, pengolahan data,
+            dan evaluasi sistem.
+
+          </p>
+
+
+          <p>
+
+            Saya juga mempunyai pengalaman PKL
+            dalam administrasi pemerintahan, termasuk
+            pekerjaan dokumen, arsip, dan laporan.
+            Saya ingin memperdalam kemampuan
+            operasional IT melalui praktik dan
+            pengalaman langsung.
+
+          </p>
+
+
+
+          <!-- EDUCATION -->
+
+          <section class="about-section">
+
+            <div class="about-section-heading">
+
+              <h3>Education</h3>
+
+              <span>01 / ACADEMIC</span>
+
+            </div>
+
+
+            <div class="education-list">
+
+
+              <article class="education-item">
+
+                <span class="education-year">
+                  2022 — 2026
+                </span>
+
+                <h4>
+                  S1 Sistem Informasi
+                </h4>
+
+                <p>
+                  Universitas Amikom Yogyakarta · Lulusan
+                </p>
+
+              </article>
+
+
+              <article class="education-item">
+
+                <span class="education-year">
+                  2019 — 2022
+                </span>
+
+                <h4>
+                  SMK Negeri 2 Probolinggo — Teknik Komputer dan Jaringan
+                </h4>
+
+                <p>
+                  Pendidikan kejuruan dengan pembelajaran
+                  dasar jaringan komputer dan konfigurasi
+                  IP/LAN.
+                </p>
+
+              </article>
+
+
+            </div>
+
+          </section>
+
+
+
+          <!-- EXPERIENCE -->
+
+          <section class="about-section">
+
+            <div class="about-section-heading">
+
+              <h3>Experience</h3>
+
+              <span>02 / EXPERIENCE</span>
+
+            </div>
+
+
+            <article class="experience-card">
+
+              <div class="experience-top">
+
+                <div>
+
+                  <h4>
+                    Praktik Kerja Lapangan (PKL)
+                  </h4>
+
+                  <p>
+                    Satuan Polisi Pamong Praja (Satpol PP)
+                  </p>
+
+                </div>
+
+
+                <span class="experience-date">
+                  Apr — Sep 2021
+                </span>
+
+              </div>
+
+
+              <p class="experience-description">
+
+                Melaksanakan kegiatan administrasi
+                perkantoran, meliputi pengelolaan
+                dokumen, pengarsipan berkas, dan
+                penyusunan laporan. Pengalaman ini
+                membantu mengembangkan ketelitian,
+                keteraturan dalam pengelolaan informasi,
+                serta kemampuan bekerja di lingkungan
+                instansi pemerintahan.
+
+              </p>
+
+            </article>
+
+          </section>
+
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="wrap about-footer">
+
+      <span>
+        © 2026 Rakha Revanza Putra Effendy
+      </span>
+
+
+    </div>
+
+  </footer>
+
+
+  <script src="assets/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1293 @@
+
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="Project case study Sistem Informasi Apotek menggunakan Laravel dan MySQL oleh Rakha Revanza Putra Effendy.">
+
+  <meta name="theme-color" content="#fbfaf7">
+
+  <title>Sistem Informasi Apotek | Rakha Revanza</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+
+    /* ==================================
+       01. PAGE DESIGN
+    ================================== */
+
+    :root {
+      --p-bg: #fbfaf7;
+      --p-white: #ffffff;
+      --p-beige: #f2ebe2;
+      --p-brown: #98643c;
+      --p-brown-dark: #79502f;
+      --p-ink: #30271f;
+      --p-muted: #786e64;
+      --p-line: #e8ded3;
+    }
+
+    body.pharmacy-page {
+      background: var(--p-bg);
+      color: var(--p-ink);
+    }
+
+    .pharmacy-page .main {
+      background: var(--p-bg);
+    }
+
+    .pharmacy-page .wrap {
+      width: min(1120px, calc(100% - 64px));
+    }
+
+
+    /* ==================================
+       02. HEADER
+    ================================== */
+
+    .pharmacy-page .site-header {
+      background: rgba(251, 250, 247, .97);
+      border-bottom: 1px solid var(--p-line);
+      backdrop-filter: blur(12px);
+    }
+
+    .pharmacy-page .logo {
+      color: var(--p-ink);
+      font-weight: 750;
+      font-size: 15px;
+    }
+
+    .pharmacy-page .logo span {
+      color: var(--p-brown);
+    }
+
+    .pharmacy-page .menu a {
+      color: var(--p-muted);
+      font-size: 13px;
+    }
+
+    .pharmacy-page .menu a:hover,
+    .pharmacy-page .menu a.active {
+      color: var(--p-brown-dark);
+      background: var(--p-beige);
+    }
+
+
+    /* ==================================
+       03. HERO
+    ================================== */
+
+    .project-hero {
+      padding: 55px 0 45px;
+    }
+
+    .project-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 35px;
+
+      color: var(--p-brown);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .project-back:hover {
+      color: var(--p-brown-dark);
+    }
+
+    .project-eyebrow {
+      margin-bottom: 15px;
+
+      color: var(--p-brown);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-hero h1 {
+      max-width: 850px;
+      margin: 0 0 18px;
+
+      color: var(--p-ink);
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+      font-weight: 750;
+    }
+
+    .project-hero h1 span {
+      color: var(--p-brown);
+    }
+
+    .project-lead {
+      max-width: 730px;
+      margin: 0;
+
+      color: var(--p-muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .project-tags span {
+      padding: 7px 13px;
+
+      color: #765638;
+      background: #f2ebe2;
+
+      border: 1px solid #e4d8ca;
+      border-radius: 3px;
+
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+
+    /* ==================================
+       04. MAIN PROJECT OVERVIEW
+    ================================== */
+
+    .project-overview {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: start;
+      gap: 35px;
+
+      padding: 30px 0 75px;
+    }
+
+    .main-preview {
+      min-width: 0;
+    }
+
+    .preview-frame {
+      padding: 15px;
+
+      background: #f0e8de;
+      border: 1px solid #e4d8ca;
+      border-radius: 5px;
+    }
+
+    .preview-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 470px;
+
+      object-fit: contain;
+      object-position: center;
+
+      background: white;
+      border: 1px solid #e8e1d9;
+      border-radius: 3px;
+    }
+
+    .preview-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+
+      margin-top: 13px;
+
+      color: var(--p-muted);
+      font-size: 11px;
+    }
+
+    .preview-caption strong {
+      color: var(--p-brown);
+      font-weight: 700;
+    }
+
+
+    /* OVERVIEW CARD */
+
+    .overview-card {
+      padding: 27px;
+
+      background: white;
+      border: 1px solid var(--p-line);
+      border-radius: 5px;
+    }
+
+    .overview-card h2 {
+      margin: 0 0 15px;
+
+      color: var(--p-ink);
+      font-size: 23px;
+      letter-spacing: -.7px;
+    }
+
+    .overview-card > p {
+      margin: 0 0 24px;
+
+      color: var(--p-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .detail-row {
+      padding: 15px 0;
+      border-top: 1px solid var(--p-line);
+    }
+
+    .detail-row span {
+      display: block;
+      margin-bottom: 6px;
+
+      color: #987657;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .detail-row strong {
+      display: block;
+
+      color: #46382b;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .overview-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      margin-top: 20px;
+    }
+
+    .overview-actions .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .pharmacy-page .btn.primary {
+      color: white;
+      background: var(--p-brown);
+      border: 1px solid var(--p-brown);
+    }
+
+    .pharmacy-page .btn.primary:hover {
+      background: var(--p-brown-dark);
+    }
+
+    .pharmacy-page .btn.secondary {
+      color: var(--p-brown-dark);
+      background: transparent;
+      border: 1px solid #d8c5b2;
+    }
+
+    .pharmacy-page .btn.secondary:hover {
+      background: var(--p-beige);
+    }
+
+
+    /* ==================================
+       05. PROJECT INFORMATION
+    ================================== */
+
+    .project-information {
+      padding: 70px 0;
+      background: #f5f1eb;
+      border-top: 1px solid var(--p-line);
+      border-bottom: 1px solid var(--p-line);
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+
+      color: var(--p-brown);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+
+      color: var(--p-ink);
+      font-size: clamp(27px, 4vw, 36px);
+      letter-spacing: -1.2px;
+    }
+
+    .section-description {
+      max-width: 720px;
+      margin: 0 0 35px;
+
+      color: var(--p-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .information-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .information-card {
+      padding: 24px;
+
+      background: white;
+      border: 1px solid var(--p-line);
+      border-radius: 4px;
+    }
+
+    .information-card small {
+      display: block;
+      margin-bottom: 13px;
+
+      color: #a17d5b;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1.2px;
+    }
+
+    .information-card h3 {
+      margin: 0 0 10px;
+
+      color: var(--p-ink);
+      font-size: 16px;
+    }
+
+    .information-card p {
+      margin: 0;
+
+      color: var(--p-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* ==================================
+       06. INTERFACE GALLERY
+    ================================== */
+
+    .project-gallery {
+      padding: 80px 0;
+    }
+
+    .gallery-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+
+      margin-bottom: 30px;
+    }
+
+    .gallery-heading p {
+      max-width: 540px;
+      margin: 0;
+
+      color: var(--p-muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .gallery-item {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+
+      text-align: left;
+      cursor: zoom-in;
+
+      background: white;
+      border: 1px solid var(--p-line);
+      border-radius: 4px;
+    }
+
+    .gallery-image {
+      height: 260px;
+      padding: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #f0e9e0;
+      overflow: hidden;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+      transition: transform .3s ease;
+    }
+
+    .gallery-item:hover .gallery-image img {
+      transform: scale(1.025);
+    }
+
+    .gallery-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      padding: 17px 19px;
+
+      color: #44372b;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .gallery-caption span:last-child {
+      color: var(--p-brown);
+      font-size: 16px;
+    }
+
+
+    /* ==================================
+       07. LEARNING SECTION
+    ================================== */
+
+    .learning-section {
+      padding: 0 0 80px;
+    }
+
+    .learning-card {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 35px;
+
+      padding: 35px;
+
+      background: white;
+      border: 1px solid var(--p-line);
+      border-radius: 5px;
+    }
+
+    .learning-card h2 {
+      margin: 0;
+
+      color: var(--p-ink);
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .learning-list {
+      margin: 0;
+      padding-left: 20px;
+
+      color: var(--p-muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .learning-list li {
+      padding-left: 5px;
+      margin-bottom: 9px;
+    }
+
+    .project-transparency {
+      margin-top: 20px;
+      padding: 16px 19px;
+
+      color: #70573e;
+      background: #f4eee7;
+      border-left: 3px solid var(--p-brown);
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* ==================================
+       08. FOOTER
+    ================================== */
+
+    .pharmacy-page .footer {
+      padding: 25px 0;
+
+      color: var(--p-muted);
+      background: #f1e9df;
+
+      border-top: 1px solid var(--p-line);
+      font-size: 12px;
+    }
+
+    .pharmacy-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+
+    /* ==================================
+       09. LIGHTBOX
+    ================================== */
+
+    .pharmacy-page .lightbox {
+      background: rgba(35, 28, 22, .94);
+    }
+
+    .pharmacy-page .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
+    .pharmacy-page .lightbox-close {
+      color: white;
+    }
+
+
+    /* ==================================
+       10. RESPONSIVE
+    ================================== */
+
+    @media (max-width: 850px) {
+
+      .project-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-card {
+        max-width: none;
+      }
+
+      .information-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .learning-card {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .pharmacy-page .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .project-hero {
+        padding-top: 38px;
+      }
+
+      .project-hero h1 {
+        font-size: 37px;
+      }
+
+      .project-lead {
+        font-size: 14px;
+      }
+
+      .project-overview {
+        padding-top: 15px;
+        gap: 25px;
+      }
+
+      .preview-frame {
+        padding: 9px;
+      }
+
+      .preview-caption {
+        flex-direction: column;
+      }
+
+      .information-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .information-card {
+        padding: 20px;
+      }
+
+      .gallery-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .gallery-image {
+        height: 220px;
+      }
+
+      .learning-card {
+        padding: 23px;
+      }
+
+      .pharmacy-footer {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="pharmacy-page">
+
+
+  <!-- =================================
+       HEADER
+  ================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap topbar">
+
+      <a class="logo" href="index.html">
+        Rakha Revanza Putra Effendy<span>.</span>
+      </a>
+
+      <button
+        class="toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Buka navigasi">
+
+        ☰ Menu
+
+      </button>
+
+      <nav class="menu" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="projects.html" class="active" aria-current="page">
+          Projects
+        </a>
+
+        <a href="skills.html">Skills</a>
+
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="main">
+
+
+    <!-- =================================
+         PROJECT INTRODUCTION
+    ================================== -->
+
+    <div class="wrap">
+
+      <section class="project-hero reveal">
+
+        <a href="projects.html" class="project-back">
+          ← Back to projects
+        </a>
+
+        <p class="project-eyebrow">
+          PROJECT 01 / WEB DEVELOPMENT
+        </p>
+
+        <h1>
+          Sistem Informasi Apotek<span>.</span>
+        </h1>
+
+        <p class="project-lead">
+
+          Aplikasi berbasis web untuk menampilkan produk
+          kesehatan, mendukung keranjang belanja, dan
+          mengelola produk melalui halaman admin.
+
+        </p>
+
+        <div class="project-tags">
+
+          <span>Laravel</span>
+
+          <span>MySQL</span>
+
+          <span>PHP</span>
+
+          <span>Full-stack Learning Project</span>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================
+           PROJECT OVERVIEW
+      ================================== -->
+
+      <section class="project-overview">
+
+
+        <!-- MAIN SCREENSHOT -->
+
+        <div class="main-preview reveal">
+
+          <div class="preview-frame">
+
+            <img
+              src="assets/pharmacy-admin.png"
+              alt="Tampilan halaman admin pengelolaan produk apotek"
+              loading="eager">
+
+          </div>
+
+          <div class="preview-caption">
+
+            <strong>ADMIN DASHBOARD</strong>
+
+            <span>Product management interface</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PROJECT DETAILS -->
+
+        <aside class="overview-card reveal">
+
+          <p class="project-eyebrow">
+            PROJECT OVERVIEW
+          </p>
+
+          <h2>About the project</h2>
+
+          <p>
+
+            Proyek ini dikembangkan sebagai bagian dari
+            proses pembelajaran full-stack melalui kelas
+            online dengan bantuan video tutorial.
+            Proses pengerjaan mencakup pengembangan
+            antarmuka serta pengelolaan data menggunakan
+            Laravel dan MySQL.
+
+          </p>
+
+
+          <div class="detail-row">
+
+            <span>Role</span>
+
+            <strong>
+              Full-stack Development
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Framework</span>
+
+            <strong>Laravel</strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Database</span>
+
+            <strong>MySQL</strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Project Scope</span>
+
+            <strong>
+              Product Catalog, Product Details,
+              Shopping Cart, Checkout, Admin Dashboard
+            </strong>
+
+          </div>
+
+
+          <div class="overview-actions">
+
+            <!--
+              File PDF tersedia di folder assets/.
+            -->
+
+            <a
+              class="btn primary"
+              href="assets/portofolio-apotek.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              View Project Documentation ↗
+
+            </a>
+
+            <a
+              class="btn secondary"
+              href="projects.html">
+
+              ← Back to All Projects
+
+            </a>
+
+          </div>
+
+        </aside>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- =================================
+         PROJECT SCOPE
+    ================================== -->
+
+    <section class="project-information">
+
+      <div class="wrap">
+
+        <p class="section-label">
+          PROJECT DETAILS
+        </p>
+
+        <h2 class="section-title">
+          What was developed?
+        </h2>
+
+        <p class="section-description">
+
+          Proyek ini mencakup beberapa bagian utama
+          yang saling terhubung untuk mendukung
+          proses penggunaan aplikasi apotek.
+
+        </p>
+
+
+        <div class="information-grid">
+
+
+          <article class="information-card">
+
+            <small>01 / USER INTERFACE</small>
+
+            <h3>Product Catalog</h3>
+
+            <p>
+              Halaman utama yang menampilkan daftar
+              produk kesehatan dan informasi produk
+              yang tersedia.
+            </p>
+
+          </article>
+
+
+          <article class="information-card">
+
+            <small>02 / PRODUCT DETAIL</small>
+
+            <h3>Product Information</h3>
+
+            <p>
+              Halaman detail untuk menampilkan
+              informasi produk sebelum pengguna
+              melakukan pembelian.
+            </p>
+
+          </article>
+
+
+          <article class="information-card">
+
+            <small>03 / TRANSACTION</small>
+
+            <h3>Shopping Cart</h3>
+
+            <p>
+              Fitur keranjang belanja untuk
+              menampilkan produk yang dipilih
+              pengguna sebelum proses pembayaran.
+            </p>
+
+          </article>
+
+
+          <article class="information-card">
+
+            <small>04 / ADMIN PANEL</small>
+
+            <h3>Product Management</h3>
+
+            <p>
+              Halaman admin untuk mengelola
+              informasi dan daftar produk
+              dalam aplikasi.
+            </p>
+
+          </article>
+
+
+          <article class="information-card">
+
+            <small>05 / DEVELOPMENT</small>
+
+            <h3>Backend Development</h3>
+
+            <p>
+              Penerapan framework Laravel
+              sebagai bagian dari pengembangan
+              sisi backend aplikasi.
+            </p>
+
+          </article>
+
+
+          <article class="information-card">
+
+            <small>06 / DATABASE</small>
+
+            <h3>Database Management</h3>
+
+            <p>
+              Penggunaan MySQL untuk mendukung
+              pengelolaan dan penyimpanan
+              data aplikasi.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         SCREENSHOT GALLERY
+    ================================== -->
+
+    <section class="project-gallery">
+
+      <div class="wrap">
+
+
+        <div class="gallery-heading">
+
+          <div>
+
+            <p class="section-label">
+              INTERFACE DOCUMENTATION
+            </p>
+
+            <h2 class="section-title">
+              Project Gallery
+            </h2>
+
+            <p>
+              Dokumentasi tampilan aplikasi dari
+              beberapa bagian yang dikembangkan.
+              Pilih gambar untuk melihat ukuran lebih besar.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="gallery-grid">
+
+
+          <!-- HOME -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/pharmacy-home.png"
+            data-alt="Halaman utama dan katalog produk">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/pharmacy-home.png"
+                alt="Halaman utama dan katalog produk"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>01. Homepage & Product Catalog</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- DETAIL -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/pharmacy-detail.png"
+            data-alt="Halaman detail produk">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/pharmacy-detail.png"
+                alt="Halaman detail produk"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>02. Product Details</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- CART -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/pharmacy-cart.png"
+            data-alt="Keranjang belanja dan pembayaran">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/pharmacy-cart.png"
+                alt="Keranjang belanja dan pembayaran"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>03. Shopping Cart & Payment</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+
+          <!-- ADMIN -->
+
+          <button
+            type="button"
+            class="gallery-item"
+            data-zoom="assets/pharmacy-admin.png"
+            data-alt="Dashboard admin dan pengelolaan produk">
+
+            <div class="gallery-image">
+
+              <img
+                src="assets/pharmacy-admin.png"
+                alt="Dashboard admin dan pengelolaan produk"
+                loading="lazy">
+
+            </div>
+
+            <div class="gallery-caption">
+
+              <span>04. Admin Dashboard</span>
+
+              <span>↗</span>
+
+            </div>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         LEARNING EXPERIENCE
+    ================================== -->
+
+    <section class="learning-section">
+
+      <div class="wrap">
+
+        <div class="learning-card">
+
+
+          <div>
+
+            <p class="section-label">
+              LEARNING EXPERIENCE
+            </p>
+
+            <h2>
+              What I learned.
+            </h2>
+
+          </div>
+
+
+          <div>
+
+            <ul class="learning-list">
+
+              <li>
+                Memahami alur pengembangan aplikasi web
+                dari sisi pengguna hingga halaman admin.
+              </li>
+
+              <li>
+                Menerapkan Laravel dan MySQL dalam
+                pengembangan aplikasi berbasis web.
+              </li>
+
+              <li>
+                Mempelajari keterkaitan antara antarmuka,
+                proses backend, dan pengelolaan data.
+              </li>
+
+              <li>
+                Mengembangkan kemampuan teknis melalui
+                praktik langsung dengan materi kelas online
+                dan video tutorial sebagai referensi.
+              </li>
+
+            </ul>
+
+
+            <div class="project-transparency">
+
+              <strong>Project context:</strong>
+
+              Proyek ini merupakan proyek pembelajaran
+              yang dikerjakan secara mandiri dengan
+              mengikuti materi kelas online dan video
+              tutorial sebagai panduan.
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =================================
+       FOOTER
+  ================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap pharmacy-footer">
+
+      <span>
+        © 2026 Rakha Revanza Putra Effendy
+      </span>
+
+      <span>
+        Personal IT Portfolio
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =================================
+       IMAGE LIGHTBOX
+  ================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Project image preview">
+
+    <button
+      class="lightbox-close"
+      type="button"
+      aria-label="Close preview">
+
+      ×
+
+    </button>
+
+    <img alt="">
+
+  </div>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="assets/app.js"></script>
+
+</body>
+</html>

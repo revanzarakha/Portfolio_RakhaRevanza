@@ -1,0 +1,623 @@
+
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="Contact Rakha Revanza Putra Effendy — IT Support, IT Operations and Information Technology.">
+
+  <meta name="theme-color" content="#fbfaf7">
+
+  <title>Contact | Rakha Revanza Putra Effendy</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+
+    /* =================================
+       CONTACT PAGE COLOR SYSTEM
+    ================================= */
+
+    :root {
+      --contact-bg: #fbfaf7;
+      --contact-white: #ffffff;
+      --contact-beige: #f2ebe2;
+      --contact-brown: #98643c;
+      --contact-dark: #30271f;
+      --contact-muted: #786e64;
+      --contact-line: #e8ded3;
+    }
+
+    body.contact-page {
+      background: var(--contact-bg);
+      color: var(--contact-dark);
+    }
+
+    .contact-page .main {
+      background: var(--contact-bg);
+    }
+
+
+    /* =================================
+       HEADER
+    ================================= */
+
+    .contact-page .site-header {
+      background: rgba(251, 250, 247, .97);
+      border-bottom: 1px solid var(--contact-line);
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-page .logo {
+      color: var(--contact-dark);
+    }
+
+    .contact-page .logo span {
+      color: var(--contact-brown);
+    }
+
+    .contact-page .menu a {
+      color: var(--contact-muted);
+    }
+
+    .contact-page .menu a.active,
+    .contact-page .menu a:hover {
+      color: var(--contact-brown);
+      background: var(--contact-beige);
+    }
+
+
+    /* =================================
+       PAGE INTRO
+    ================================= */
+
+    .contact-intro {
+      padding: 65px 0 35px;
+    }
+
+    .contact-intro .eyebrow {
+      color: var(--contact-brown);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+    }
+
+    .contact-intro h1 {
+      margin: 12px 0 16px;
+      color: var(--contact-dark);
+      font-size: clamp(40px, 5vw, 56px);
+      letter-spacing: -2px;
+      line-height: 1.15;
+    }
+
+    .contact-intro h1 span {
+      color: var(--contact-brown) !important;
+    }
+
+    .contact-intro .lead {
+      max-width: 680px;
+      color: var(--contact-muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+
+    /* =================================
+       TWO COLUMN LAYOUT
+    ================================= */
+
+    .contact-page .contact-grid {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+      gap: 25px;
+      align-items: stretch;
+      padding-top: 25px;
+      padding-bottom: 90px;
+    }
+
+    .contact-page .contact-card {
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      padding: 32px;
+      background: var(--contact-white);
+      border: 1px solid var(--contact-line);
+      border-radius: 7px;
+      box-shadow: 0 8px 25px rgba(65, 45, 25, .035);
+    }
+
+    .contact-card h3 {
+      margin: 0 0 15px;
+      color: var(--contact-dark);
+      font-size: 23px;
+      letter-spacing: -.5px;
+    }
+
+    .contact-description {
+      margin-bottom: 25px;
+      color: var(--contact-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+
+    /* =================================
+       CONTACT INFORMATION
+    ================================= */
+
+    .contact-info {
+      margin-top: 20px;
+    }
+
+    .contact-info .info-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 0;
+      margin: 0;
+      border-bottom: 1px solid var(--contact-line);
+    }
+
+    .contact-info .info-line strong {
+      flex-shrink: 0;
+      color: var(--contact-dark);
+      font-size: 14px;
+    }
+
+    .contact-info .info-line a {
+      color: var(--contact-brown);
+      font-size: 14px;
+      text-align: right;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: color .2s ease;
+    }
+
+    .contact-info .info-line a:hover {
+      color: var(--contact-dark);
+      text-decoration: underline;
+    }
+
+
+    /* =================================
+       CONTACT BUTTONS
+    ================================= */
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .contact-actions .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 19px;
+      border: 1px solid #d8c6b4;
+      border-radius: 6px;
+      background: white;
+      color: var(--contact-brown);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+
+    .contact-actions .btn:hover {
+      background: var(--contact-beige);
+      border-color: var(--contact-brown);
+      transform: translateY(-2px);
+    }
+
+    .contact-actions .btn.primary {
+      background: var(--contact-brown);
+      color: white;
+      border-color: var(--contact-brown);
+    }
+
+    .contact-actions .btn.primary:hover {
+      background: #79502f;
+    }
+
+
+    /* =================================
+       WORK INTERESTS
+    ================================= */
+
+    .work-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--contact-line);
+    }
+
+    .work-item:first-child {
+      padding-top: 12px;
+    }
+
+    .work-item .kicker {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--contact-brown);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .work-item p {
+      margin: 0;
+      color: var(--contact-dark);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .work-note {
+      margin-top: auto;
+      padding: 20px;
+      background: var(--contact-beige);
+      border-left: 3px solid #ae8967;
+      border-radius: 3px;
+    }
+
+    .work-note p {
+      margin: 0;
+      color: #705d4b;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+
+    /* =================================
+       FOOTER
+    ================================= */
+
+    .contact-page .footer {
+      padding: 25px 0;
+      color: var(--contact-muted);
+      background: #f1e9df;
+      border-top: 1px solid var(--contact-line);
+      font-size: 12px;
+    }
+
+
+    /* =================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 800px) {
+
+      .contact-page .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .contact-page .contact-card {
+        padding: 27px;
+      }
+
+      .work-card {
+        min-height: auto;
+      }
+
+    }
+
+    @media (max-width: 500px) {
+
+      .contact-intro {
+        padding-top: 42px;
+      }
+
+      .contact-intro h1 {
+        font-size: 39px;
+      }
+
+      .contact-page .contact-card {
+        padding: 22px;
+      }
+
+      .contact-info .info-line {
+        align-items: flex-start;
+      }
+
+      .contact-info .info-line a {
+        max-width: 65%;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+      }
+
+      .contact-actions .btn {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="contact-page">
+
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+
+    <div class="wrap topbar">
+
+      <a class="logo" href="index.html">
+        Rakha Revanza Putra Effendy<span>.</span>
+      </a>
+
+      <button
+        class="toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Buka navigasi">
+
+        ☰ Menu
+
+      </button>
+
+      <nav class="menu" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="projects.html">Projects</a>
+
+        <a href="skills.html">Skills</a>
+
+        <a href="contact.html" class="active" aria-current="page">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <div class="wrap">
+
+
+      <!-- INTRODUCTION -->
+
+      <section class="contact-intro reveal">
+
+        <p class="eyebrow">
+          04 / CONTACT
+        </p>
+
+        <h1>
+          Let's connect<span>.</span>
+        </h1>
+
+        <p class="lead">
+          Terbuka untuk peluang magang dan pekerjaan di bidang IT Support,
+          IT Operations, Staf IT, serta kesempatan belajar yang relevan.
+        </p>
+
+      </section>
+
+
+
+      <!-- CONTACT GRID -->
+
+      <section class="section contact-grid">
+
+
+        <!-- LEFT: GET IN TOUCH -->
+
+        <div class="contact-card reveal">
+
+          <h3>Get in touch</h3>
+
+          <p class="contact-description">
+            Kamu bisa menghubungi saya melalui email, Instagram,
+            atau WhatsApp untuk berdiskusi tentang peluang magang,
+            pekerjaan, dan kolaborasi di bidang IT.
+          </p>
+
+
+          <div class="contact-info">
+
+
+            <!-- EMAIL -->
+
+            <div class="info-line">
+
+              <strong>Email</strong>
+
+              <a
+                href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=revanzarakha%40gmail.com&amp;su=Portfolio%20Inquiry"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                revanzarakha@gmail.com
+
+              </a>
+
+            </div>
+
+
+            <!-- INSTAGRAM -->
+
+            <div class="info-line">
+
+              <strong>Instagram</strong>
+
+              <a
+                href="https://www.instagram.com/rakha.revanza/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                @rakha.revanza
+
+              </a>
+
+            </div>
+
+
+            <!-- WHATSAPP -->
+
+            <div class="info-line">
+
+              <strong>WhatsApp</strong>
+
+              <a
+                href="https://wa.me/6285745277260"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                +62 857-4527-7260
+
+              </a>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- BUTTONS -->
+
+          <div class="contact-actions">
+
+            <a
+              class="btn primary"
+              href="https://wa.me/6285745277260?text=Halo%20Rakha%2C%20saya%20melihat%20portfolio%20Anda."
+              target="_blank"
+              rel="noopener noreferrer">
+
+              WhatsApp ↗
+
+            </a>
+
+
+            <a
+              class="btn"
+              href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=revanzarakha%40gmail.com&amp;su=Portfolio%20Inquiry"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              Send an Email ↗
+
+            </a>
+
+
+            <a
+              class="btn"
+              href="https://www.instagram.com/rakha.revanza/"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              Instagram ↗
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- RIGHT: WORK INTERESTS -->
+
+        <div class="contact-card work-card reveal">
+
+          <h3>Work interests</h3>
+
+
+          <div class="work-item">
+
+            <span class="kicker">
+              Primary interests
+            </span>
+
+            <p>
+              IT Support · IT Operations · Staf IT · Data Analyst
+            </p>
+
+          </div>
+
+
+          <div class="work-item">
+
+            <span class="kicker">
+              Preferred areas
+            </span>
+
+            <p>
+              Surabaya dan Sekitarnya
+            </p>
+
+          </div>
+
+
+          <div class="work-note">
+
+            <p>
+              Saya terbuka untuk kesempatan magang, posisi entry-level,
+              dan pengalaman profesional yang dapat mendukung
+              pengembangan karier di bidang teknologi informasi.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="wrap">
+
+      <span>
+        © 2026 Rakha Revanza Putra Effendy
+      </span>
+
+  
+
+    </div>
+
+  </footer>
+
+
+
+  <script src="assets/app.js"></script>
+
+</body>
+
+</html>
