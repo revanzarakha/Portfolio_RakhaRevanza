@@ -942,6 +942,16 @@
 
             <a
               class="btn primary"
+              href="https://github.com/revanzarakha/mental-health-dass21"
+              target="_blank"
+              rel="noopener">
+
+              View Repository
+
+            </a>
+
+            <a
+              class="btn secondary"
               href="projects.html">
 
               ← Back to All Projects
@@ -977,9 +987,10 @@
         <p class="section-description">
 
           Perbandingan performa Logistic Regression
-          dan Random Forest berdasarkan akurasi
-          pada data pengujian sebesar 20%,
-          sesuai hasil yang dilaporkan dalam skripsi.
+          dan Random Forest pada data pengujian sebesar 20%.
+          Karena kategori Berat/Sangat Berat mendominasi dataset,
+          akurasi dilengkapi dengan macro-F1 agar performa tiap
+          kelas tidak tertutup oleh kelas mayoritas.
 
         </p>
 
@@ -1070,7 +1081,7 @@
 
 
             <p class="model-footnote">
-              Classification model · Test data accuracy
+              Test accuracy · Macro-F1: 0.875 (depresi) / 0.844 (kecemasan) / 0.884 (stres)
             </p>
 
           </article>
@@ -1159,7 +1170,7 @@
 
 
             <p class="model-footnote">
-              Classification model · Test data accuracy
+              Test accuracy · Macro-F1: 0.675 (depresi) / 0.662 (kecemasan) / 0.681 (stres)
             </p>
 
           </article>
@@ -1177,14 +1188,20 @@
 
             <strong>Evaluation note:</strong>
 
-            Berdasarkan angka akurasi yang dilaporkan,
-            Logistic Regression memperoleh hasil lebih
-            tinggi dibandingkan Random Forest pada
-            ketiga domain yang dievaluasi.
+            Logistic Regression memperoleh macro-F1 lebih
+            tinggi dibandingkan Random Forest pada ketiga
+            domain (0.84-0.88 vs 0.66-0.68). Akurasi
+            91-93% terlihat tinggi karena sebagian besar
+            data uji berasal dari kategori Berat/Sangat Berat,
+            sehingga macro-F1 lebih jujur menggambarkan
+            performa antar kelas.
 
-            Akurasi model merupakan hasil evaluasi
-            pada data pengujian, bukan tingkat keyakinan
-            atau probabilitas risiko klinis pengguna.
+            Perlu dicatat: label kategori diturunkan dari
+            21 item DASS-21 yang juga menjadi fitur model.
+            Model pada dasarnya mempelajari ulang aturan
+            skoring DASS-21, bukan menemukan sinyal klinis
+            baru. Hasil ini bukan tingkat keyakinan atau
+            probabilitas risiko klinis pengguna.
 
           </div>
 
@@ -1426,9 +1443,10 @@
               </li>
 
               <li>
-                Mengevaluasi performa model
-                menggunakan metrik akurasi
-                pada data pengujian.
+                Mengevaluasi performa model dengan
+                akurasi dan macro-F1, termasuk menyadari
+                bahwa akurasi bisa menyesatkan pada
+                dataset yang tidak seimbang.
               </li>
 
               <li>
