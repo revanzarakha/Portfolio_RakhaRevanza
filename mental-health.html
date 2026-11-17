@@ -444,6 +444,93 @@
 
 
     /* ==================================
+       05b. DATA ANALYSIS PROCESS
+    ================================== */
+
+    .process-section {
+      padding: 75px 0 60px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .process-card {
+      padding: 24px;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 5px;
+    }
+
+    .process-card span {
+      display: block;
+      margin-bottom: 10px;
+
+      color: #a17d5b;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1.2px;
+    }
+
+    .process-card h3 {
+      margin: 0 0 8px;
+
+      color: var(--m-ink);
+      font-size: 16px;
+    }
+
+    .process-card p {
+      margin: 0;
+
+      color: var(--m-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* ==================================
+       05c. LIMITATIONS
+    ================================== */
+
+    .limitations-section {
+      padding: 0 0 75px;
+    }
+
+    .limitations-card {
+      padding: 30px;
+
+      background: white;
+      border: 1px solid var(--m-line);
+      border-radius: 5px;
+    }
+
+    .limitations-card ul {
+      margin: 0;
+      padding-left: 20px;
+
+      color: var(--m-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .limitations-card li {
+      margin-bottom: 11px;
+      padding-left: 4px;
+    }
+
+    .limitations-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .limitations-card strong {
+      color: #4b3a2b;
+    }
+
+
+    /* ==================================
        06. PROJECT GALLERY
     ================================== */
 
@@ -666,6 +753,10 @@
         grid-template-columns: 1fr;
       }
 
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .insights-card {
         grid-template-columns: 1fr;
       }
@@ -705,7 +796,8 @@
       }
 
       .model-grid,
-      .gallery-grid {
+      .gallery-grid,
+      .process-grid {
         grid-template-columns: 1fr;
       }
 
@@ -795,7 +887,7 @@
         </a>
 
         <p class="project-eyebrow">
-          PROJECT 02 / PYTHON · MACHINE LEARNING
+          PROJECT 01 / DATA ANALYSIS
         </p>
 
         <h1>
@@ -804,11 +896,11 @@
 
         <p class="lead">
 
-          Aplikasi skrining awal berdasarkan kuesioner
-          DASS-21, menggunakan model klasifikasi untuk
-          mengestimasi kategori depresi, kecemasan,
-          dan stres serta menampilkan hasil melalui
-          antarmuka Streamlit.
+          Analisis 443 responden DASS-21: pembersihan data,
+          perbandingan Logistic Regression dan Random Forest,
+          serta evaluasi model dengan macro-F1. Hasilnya
+          diintegrasikan ke aplikasi Streamlit sebagai
+          skrining awal.
 
         </p>
 
@@ -874,15 +966,12 @@
 
           <p>
 
-            Proyek ini merupakan penelitian dan
-            pengembangan aplikasi machine learning
-            menggunakan data jawaban 443 responden
-            dari kuesioner DASS-21.
-
-            Penelitian membandingkan dua algoritma
-            klasifikasi, yaitu Logistic Regression
-            dan Random Forest, untuk mengestimasi
-            kategori depresi, kecemasan, dan stres.
+            Penelitian ini menganalisis jawaban 443 responden
+            kuesioner DASS-21: menyiapkan data, menyusun label
+            keparahan, lalu membandingkan Logistic Regression
+            dan Random Forest untuk mengestimasi kategori
+            depresi, kecemasan, dan stres. Model terpilih
+            diintegrasikan ke aplikasi Streamlit.
 
           </p>
 
@@ -911,6 +1000,17 @@
 
           <div class="detail-row">
 
+            <span>Data Split</span>
+
+            <strong>
+              354 latih / 89 uji (80:20)
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
             <span>Programming Language</span>
 
             <strong>Python</strong>
@@ -924,6 +1024,17 @@
 
             <strong>
               Logistic Regression & Random Forest
+            </strong>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span>Evaluation</span>
+
+            <strong>
+              Accuracy · Macro-F1 · 3-fold CV
             </strong>
 
           </div>
@@ -965,6 +1076,132 @@
       </section>
 
     </div>
+
+
+
+    <!-- ==================================
+         DATA ANALYSIS PROCESS
+    =================================== -->
+
+    <section class="process-section">
+
+      <div class="wrap">
+
+        <p class="section-label">
+          DATA ANALYSIS PROCESS
+        </p>
+
+        <h2 class="section-title">
+          From responses to a model.
+        </h2>
+
+        <p class="section-description">
+          Urutan pekerjaan yang saya lakukan pada data, dari
+          pengumpulan sampai model dipakai di aplikasi. Setiap
+          langkah bisa ditelusuri ke laporan skripsi.
+        </p>
+
+
+        <div class="process-grid">
+
+
+          <article class="process-card reveal">
+
+            <span>01 / DATASET</span>
+
+            <h3>443 responden</h3>
+
+            <p>
+              Kuesioner DASS-21 disebar melalui Google Form.
+              21 item dengan skala 0–3, terbagi 7 item untuk
+              depresi, 7 untuk kecemasan, dan 7 untuk stres.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <span>02 / PREPARATION</span>
+
+            <h3>Cleaning & labeling</h3>
+
+            <p>
+              Pembersihan data, penyusunan label lima kategori
+              keparahan mengikuti aturan skoring DASS-21,
+              pemilihan 21 item sebagai fitur, dan standarisasi
+              dengan StandardScaler.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <span>03 / EXPLORATION</span>
+
+            <h3>Class distribution</h3>
+
+            <p>
+              Sebaran kelas diperiksa sebelum pemodelan.
+              Kategori Berat dan Sangat Berat mendominasi,
+              sehingga akurasi saja tidak cukup untuk menilai
+              model.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <span>04 / MODELING</span>
+
+            <h3>Two algorithms</h3>
+
+            <p>
+              Logistic Regression dan Random Forest dilatih
+              pada pembagian data 80:20 — 354 data latih dan
+              89 data uji.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <span>05 / EVALUATION</span>
+
+            <h3>Beyond accuracy</h3>
+
+            <p>
+              Accuracy, precision, recall, dan F1 per kelas,
+              dilengkapi macro-F1 serta 3-fold cross-validation
+              untuk melihat kestabilan performa.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <span>06 / DELIVERY</span>
+
+            <h3>Model to application</h3>
+
+            <p>
+              Model disimpan dengan joblib lalu diintegrasikan
+              ke aplikasi Streamlit agar hasil analisis bisa
+              dipakai tanpa membuka notebook.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
 
 
 
@@ -1194,16 +1431,75 @@
             91-93% terlihat tinggi karena sebagian besar
             data uji berasal dari kategori Berat/Sangat Berat,
             sehingga macro-F1 lebih jujur menggambarkan
-            performa antar kelas.
-
-            Perlu dicatat: label kategori diturunkan dari
-            21 item DASS-21 yang juga menjadi fitur model.
-            Model pada dasarnya mempelajari ulang aturan
-            skoring DASS-21, bukan menemukan sinyal klinis
-            baru. Hasil ini bukan tingkat keyakinan atau
-            probabilitas risiko klinis pengguna.
+            performa antar kelas. Keterbatasan desain
+            penelitian dijelaskan di bagian berikutnya.
 
           </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         LIMITATIONS
+    =================================== -->
+
+    <section class="limitations-section">
+
+      <div class="wrap">
+
+        <p class="section-label">
+          LIMITATIONS
+        </p>
+
+        <h2 class="section-title">
+          What this analysis cannot claim.
+        </h2>
+
+        <p class="section-description">
+          Bagian ini sengaja saya tampilkan. Analisis yang jujur
+          harus menyebut apa yang tidak bisa dibuktikan oleh
+          desain penelitiannya.
+        </p>
+
+
+        <div class="limitations-card">
+
+          <ul>
+
+            <li>
+              <strong>Circularity.</strong> Label kategori
+              dihitung dari 21 item DASS-21 yang juga dipakai
+              sebagai fitur. Model pada dasarnya mempelajari
+              ulang aturan skoring, bukan menemukan sinyal
+              klinis independen.
+            </li>
+
+            <li>
+              <strong>Class imbalance.</strong> Akurasi
+              91–93% dipengaruhi dominasi kelas Berat dan
+              Sangat Berat. Macro-F1 0,84–0,88 lebih jujur
+              untuk membaca performa antar kelas.
+            </li>
+
+            <li>
+              <strong>Sample.</strong> 443 responden self-report,
+              bukan sampel klinis. Hasilnya tidak bisa
+              digeneralisasi menjadi diagnosis.
+            </li>
+
+            <li>
+              <strong>Next step.</strong> Memisahkan fitur dari
+              label — misalnya memprediksi skor dari subset item
+              — atau memakai penilaian independen, agar model
+              belajar dari sinyal di luar aturan skoring.
+            </li>
+
+          </ul>
 
         </div>
 
@@ -1531,7 +1827,7 @@
       </span>
 
       <span>
-        Personal IT Portfolio
+        Data Analyst Portfolio
       </span>
 
     </div>
