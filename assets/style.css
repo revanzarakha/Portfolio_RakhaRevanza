@@ -880,59 +880,6 @@ h3 {
 }
 
 
-/* 19. INTRO ANIMATION */
-
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-
-  display: grid;
-  place-items: center;
-
-  color: #34271c;
-  background: #fbfaf7;
-
-  transition: opacity 0.5s;
-}
-
-.intro.dismiss {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.intro-box {
-  padding: 20px;
-  text-align: center;
-}
-
-.intro-box h2 {
-  font-size: clamp(28px, 4vw, 50px);
-}
-
-.intro-line {
-  width: 250px;
-  height: 1px;
-  margin: 22px auto;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #a97950,
-    transparent
-  );
-
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.2;
-    transform: scaleX(0.8);
-  }
-}
-
-
 /* 20. REVEAL ANIMATION */
 
 .reveal {
