@@ -13,3 +13,6 @@ Desktop.ini
 
 # Office temp/lock files
 ~$*
+
+# Local agent config
+.opencode/
