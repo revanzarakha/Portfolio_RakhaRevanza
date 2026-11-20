@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superstore Product Profitability & Discount Governance Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --border-subtle: #edf2f7;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      
+      --accent: #0f172a;
+      --crimson: #dc2626;
+      --crimson-subtle: #fef2f2;
+      --crimson-border: #fecaca;
+      
+      --emerald: #059669;
+      --emerald-subtle: #ecfdf5;
+      
+      --amber: #d97706;
+      --amber-subtle: #fffbeb;
+      --amber-border: #fef3c7;
+      
+      --blue: #2563eb;
+      --blue-subtle: #eff6ff;
+      --blue-border: #dbeafe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      padding: 32px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .shell {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    /* TOP HEADER */
+    header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .dataset-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .business-question-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+
+    .tag-question {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #78716c;
+      background: #e7e5e4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .question-statement {
+      font-size: 13px;
+      font-weight: 500;
+      color: #292524;
+    }
+
+    /* METRIC CARDS */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .metrics-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .metric-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .metric-figure {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .metric-sub {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill {
+      font-weight: 600;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pill-danger { background: var(--crimson-subtle); color: var(--crimson); }
+    .pill-success { background: var(--emerald-subtle); color: var(--emerald); }
+    .pill-neutral { background: #f1f5f9; color: var(--text-secondary); }
+
+    /* DASHBOARD CONTENT */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1040px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .card:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-head {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .chart-container-large {
+      position: relative;
+      height: 340px;
+      width: 100%;
+    }
+
+    .charts-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 680px) {
+      .charts-duo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chart-container-half {
+      position: relative;
+      height: 200px;
+      width: 100%;
+    }
+
+    /* RIGHT COLUMN: INSIGHTS & ACTIONS */
+    .feed-group {
+      margin-bottom: 20px;
+    }
+
+    .feed-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .feed-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feed-header.findings { color: #854d0e; }
+    .feed-header.actions { color: #1e40af; }
+
+    .feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feed-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .feed-item.alert {
+      background: #fffdfa;
+      border-color: var(--amber-border);
+    }
+
+    .feed-item.decision {
+      background: #fbfdff;
+      border-color: var(--blue-border);
+    }
+
+    .feed-index {
+      font-size: 11px;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      margin-top: 1px;
+    }
+
+    .idx-finding { background: var(--amber-subtle); color: var(--amber); }
+    .idx-action { background: var(--blue-subtle); color: var(--blue); }
+
+    .feed-content {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .feed-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      border-bottom: 1px solid var(--border);
+      padding: 6px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .data-table td {
+      padding: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .num-neg {
+      color: var(--crimson);
+      font-weight: 600;
+    }
+
+    .num-pos {
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-tertiary);
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="project-meta">Superstore Sales Intelligence &bull; Portfolio Data Analyst</div>
+        <h1>Analisis Profitabilitas Produk & Evaluasi Kebijakan Diskon</h1>
+      </div>
+      <div class="dataset-badge">
+        N = 9.994 Transaksi &bull; MySQL 8.0 &bull; Python 3
+      </div>
+    </div>
+
+    <div class="business-question-strip">
+      <span class="tag-question">Business Question</span>
+      <span class="question-statement">
+        Apakah 299 produk yang mencatatkan laba negatif kumulatif harus dihapus dari katalog penjualan, ataukah kerugian tersebut disebabkan oleh tata kelola diskon?
+      </span>
+    </div>
+  </header>
+
+  <!-- 4 KPI SUMMARY CARDS -->
+  <section class="metrics-row">
+    <div class="metric-card">
+      <div class="metric-title">Total Penjualan (Gross Sales)</div>
+      <div class="metric-figure">$2.297.201</div>
+      <div class="metric-sub">
+        <span class="pill pill-neutral">1.850 Produk</span> di seluruh katalog
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-title">Laba Bersih Kumulatif</div>
+      <div class="metric-figure">$286.397</div>
+      <div class="metric-sub">
+        <span class="pill pill-success">+12,47%</span> Margin keseluruhan
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-title">Produk Rugi Kumulatif</div>
+      <div class="metric-figure">299 Produk</div>
+      <div class="metric-sub">
+        <span class="pill pill-danger">-$77.068</span> 24,0% dari total omzet
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-title">Tingkat Penyelamatan Produk</div>
+      <div class="metric-figure">80,9%</div>
+      <div class="metric-sub">
+        <span class="pill pill-success">242 Produk</span> terbukti pernah untung
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="dashboard-grid">
+    
+    <!-- LEFT: CHARTS & EMPIRICAL EVIDENCE -->
+    <div class="col-charts">
+      
+      <!-- Top 10 Loss Bar Chart -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">10 Produk dengan Akumulasi Kerugian Terbesar</div>
+          <div class="card-desc">Total kerugian kelompok ini: -$28.552</div>
+        </div>
+        <div class="chart-container-large">
+          <canvas id="chartTopLoss"></canvas>
+        </div>
+      </div>
+
+      <!-- Split Duo Charts -->
+      <div class="charts-duo">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Rata-rata Diskon Diberikan</div>
+            <div class="card-desc">Produk Rugi vs Produk Untung</div>
+          </div>
+          <div class="chart-container-half">
+            <canvas id="chartDiscountGap"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Net Margin per Kategori</div>
+            <div class="card-desc">Furniture paling rentan diskon</div>
+          </div>
+          <div class="chart-container-half">
+            <canvas id="chartCategoryMargin"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empirical Table Evidence -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Bukti Kasus Nyata: Cubify CubeX 3D Printer Double Head</div>
+          <div class="card-desc">Sensitivitas margin terhadap tingkat diskon (SKU paling merugikan)</div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order Date</th>
+              <th>Qty</th>
+              <th>Sales</th>
+              <th>Discount</th>
+              <th>Profit</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>15/12/2016</td>
+              <td>2</td>
+              <td>$1.799,99</td>
+              <td>70%</td>
+              <td class="num-neg">-$2.639,99</td>
+              <td>Rugi Besar</td>
+            </tr>
+            <tr>
+              <td>25/11/2017</td>
+              <td>5</td>
+              <td>$4.499,98</td>
+              <td>70%</td>
+              <td class="num-neg">-$6.599,98</td>
+              <td>Rugi Besar</td>
+            </tr>
+            <tr>
+              <td>01/04/2018</td>
+              <td>2</td>
+              <td>$4.799,98</td>
+              <td>20%</td>
+              <td class="num-pos">+$360,00</td>
+              <td>Untung bersih</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: STRUCTURED FINDINGS & ACTION PLAN -->
+    <div class="col-insights">
+      
+      <!-- FINDINGS -->
+      <div class="card">
+        <div class="feed-header findings">
+          <span>Temuan Analisis (SQL Evidence)</span>
+        </div>
+        <div class="feed-list">
+          
+          <div class="feed-item alert">
+            <div class="feed-index idx-finding">1</div>
+            <div class="feed-content">
+              <strong>Omzet besar berisiko lenyap:</strong> 299 produk rugi menyumbang penjualan <strong>$550.382,94</strong> (24,0% dari seluruh omzet perusahaan). Menghapus produk-produk ini akan langsung memotong hampir seperempat pendapatan bisnis.
+            </div>
+          </div>
+
+          <div class="feed-item alert">
+            <div class="feed-index idx-finding">2</div>
+            <div class="feed-content">
+              <strong>Diskon tidak terkontrol (>2,3x lipat):</strong> Produk rugi menerima rata-rata diskon <strong>29,26%</strong>, sedangkan produk untung hanya menerima <strong>12,42%</strong>. Tidak ada batasan diskon sistemik pada transaksi bernilai tinggi.
+            </div>
+          </div>
+
+          <div class="feed-item alert">
+            <div class="feed-index idx-finding">3</div>
+            <div class="feed-content">
+              <strong>80,9% produk terbukti viabel:</strong> Dari 299 produk rugi, sebanyak <strong>242 produk mencatat laba positif</strong> pada transaksi berdiskon normal (&le; 20%). Kerugian bukan disebabkan oleh harga pokok produk, melainkan erosi margin akibat diskon di atas 50%.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="card">
+        <div class="feed-header actions">
+          <span>Rekomendasi Strategis Bisnis</span>
+        </div>
+        <div class="feed-list">
+          
+          <div class="feed-item decision">
+            <div class="feed-index idx-action">1</div>
+            <div class="feed-content">
+              <strong>Pertahankan seluruh 299 produk di katalog:</strong> Jangan lakukan delisting produk. Menghapus produk akan mematikan volume penjualan dan retensi pelanggan korporat.
+            </div>
+          </div>
+
+          <div class="feed-item decision">
+            <div class="feed-index idx-action">2</div>
+            <div class="feed-content">
+              <strong>Terapkan Discount Cap maksimal 20%:</strong> Pasang validasi otomatis di sistem order/POS agar staf penjualan tidak dapat memasukkan diskon &gt; 20% secara mandiri.
+            </div>
+          </div>
+
+          <div class="feed-item decision">
+            <div class="feed-index idx-action">3</div>
+            <div class="feed-content">
+              <strong>Approval Matrix berjenjang:</strong> Diskon &gt; 20% hanya dapat diajukan untuk volume B2B besar atau barang cuci gudang, wajib dengan persetujuan tertulis Finance / Regional Manager.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- METHODOLOGY & TECH -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Metodologi & Validasi</div>
+        </div>
+        <div class="feed-content" style="color: var(--text-tertiary); font-size: 12px;">
+          Seluruh metrik divalidasi silang menggunakan query MySQL 8.0 (`GROUP BY`, `HAVING SUM(profit) < 0`, subquery) dan diverifikasi melalui kalkulasi Pandas Python. Data mentah 9.994 baris Superstore telah dibersihkan dari baris korup dan dinormalisasi ke standar ISO DATE.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>Proyek Portofolio Data Analyst &bull; Analisis oleh Rakha Revanza</div>
+    <div>Dataset: Superstore (Cleaned) &bull; 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  // Setup Chart typography & defaults
+  Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = '#64748b';
+
+  // 1. Horizontal Bar: Top 10 Loss Products
+  const ctxLoss = document.getElementById('chartTopLoss').getContext('2d');
+  new Chart(ctxLoss, {
+    type: 'bar',
+    data: {
+      labels: [
+        'Cubify CubeX 3D Printer Double Head',
+        'Lexmark MX611dhe Laser Printer',
+        'Cubify CubeX 3D Printer Triple Head',
+        'Chromcraft Bull-Nose Wood Oval Table',
+        'Bush Advantage Racetrack Conf. Table',
+        'GBC DocuBind P400 Electric Binding',
+        'Cisco TelePresence System EX90 Unit',
+        'Martin Yale Chadless Letter Opener',
+        'Balt Solid Wood Round Tables',
+        'BoxOffice Rectangular Meeting Tables'
+      ],
+      datasets: [{
+        data: [-8880, -4590, -3840, -2876, -1934, -1878, -1811, -1299, -1201, -1148],
+        backgroundColor: '#dc2626',
+        borderRadius: 4,
+        barPercentage: 0.65
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleFont: { size: 12, weight: '600' },
+          bodyFont: { size: 12 },
+          padding: 10,
+          cornerRadius: 6,
+          callbacks: {
+            label: c => ' Akumulasi Kerugian: -$' + Math.abs(c.raw).toLocaleString()
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: '#f1f5f9', drawBorder: false },
+          ticks: {
+            callback: v => '-$' + Math.abs(v).toLocaleString()
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: '#1e293b', font: { weight: '500' } }
+        }
+      }
+    }
+  });
+
+  // 2. Bar: Discount Gap
+  const ctxDisc = document.getElementById('chartDiscountGap').getContext('2d');
+  new Chart(ctxDisc, {
+    type: 'bar',
+    data: {
+      labels: ['Produk Untung', 'Produk Rugi'],
+      datasets: [{
+        data: [12.42, 29.26],
+        backgroundColor: ['#0f172a', '#dc2626'],
+        borderRadius: 4,
+        barPercentage: 0.5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          callbacks: {
+            label: c => ' Rata-rata Diskon: ' + c.raw + '%'
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 35,
+          grid: { color: '#f1f5f9' },
+          ticks: { callback: v => v + '%' }
+        },
+        x: { grid: { display: false }, ticks: { color: '#1e293b', font: { weight: '500' } } }
+      }
+    }
+  });
+
+  // 3. Bar: Category Margin
+  const ctxCat = document.getElementById('chartCategoryMargin').getContext('2d');
+  new Chart(ctxCat, {
+    type: 'bar',
+    data: {
+      labels: ['Technology', 'Office Supp.', 'Furniture'],
+      datasets: [{
+        data: [17.40, 17.04, 2.49],
+        backgroundColor: ['#2563eb', '#64748b', '#d97706'],
+        borderRadius: 4,
+        barPercentage: 0.55
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          callbacks: {
+            label: c => ' Margin Bersih: ' + c.raw + '%'
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 20,
+          grid: { color: '#f1f5f9' },
+          ticks: { callback: v => v + '%' }
+        },
+        x: { grid: { display: false }, ticks: { color: '#1e293b', font: { weight: '500' } } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
