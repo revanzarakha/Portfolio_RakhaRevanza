@@ -16,3 +16,8 @@ Desktop.ini
 
 # Local agent config
 .opencode/
+AGENTS.md
+*.env
+*.env.*
+.env
+.env.*
